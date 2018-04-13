@@ -33,12 +33,7 @@ class Guidance extends \Phalcon\Di\Injectable
         output('beforeStart  beforeStart', 'beforeStart');
         # 写入依赖注入
 
-        $this->di->setShared('server_table', function () {
-            return new \app\table\server();
-        });
-        $this->di->setShared('server_ping_table', function () {
-            return new \app\table\serverPing();
-        });
+
 
         $this->server_table;
     }
@@ -64,12 +59,8 @@ class Guidance extends \Phalcon\Di\Injectable
      */
     public function readyJudge(Event $event, \pms\Server $pms_server, $timeid)
     {
-        output(boolval($this->config->database), '准备检查!');
-        if ($this->config->database) {
-            $this->dConfig->ready = true;
-            output('初始化完成', 'init');
-        }
         $this->dConfig->ready = true;
+        output('初始化完成', 'init');
     }
 
     /**
@@ -77,9 +68,8 @@ class Guidance extends \Phalcon\Di\Injectable
      */
     public function readySucceed(Event $event, \pms\Server $pms_server, \Swoole\Server $swoole_server)
     {
-        #实例化更新服务列表
-        $ser = new logic\UpdateServer($swoole_server);
-        $ser->start();
+
+
     }
 
     /**
