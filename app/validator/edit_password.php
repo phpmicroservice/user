@@ -18,8 +18,7 @@ class edit_password extends \pms\Validation\Validator
      * @param string $attribute 要验证的字段名字
      * @return boolean
      */
-    public
-    function validate(\Phalcon\Validation $validation, $attribute)
+    public function validate(\Phalcon\Validation $validation, $attribute)
     {
         $password = $validation->getValue('old_password');
         $user_id = $validation->getValue('user_id');
