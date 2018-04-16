@@ -35,7 +35,7 @@ class Info extends Controller
         ]);
         $service = new \logic\user\Info();
         $re = $service->edit($this->user_id, $data);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -47,7 +47,7 @@ class Info extends Controller
         $service = new \logic\user\Info();
         $re = $service->info_user($this->user_id);
         Trace::add('info', $re);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     public function p_info()
@@ -55,7 +55,7 @@ class Info extends Controller
         $user_id = $this->request->get('user_id', 'int', 0);
         $service = new \logic\user\Info();
         $re = $service->info_user($user_id);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
 }

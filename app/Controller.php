@@ -2,7 +2,7 @@
 
 namespace app;
 
-use Phalcon\Validation\Message;
+use pms\Validation\Message\Group;
 
 
 /**
@@ -15,6 +15,8 @@ use Phalcon\Validation\Message;
  */
 class Controller extends \pms\Controller
 {
+    protected $session_id;
+
     /**
      * 初始化
      * @param $connect
@@ -22,17 +24,36 @@ class Controller extends \pms\Controller
     protected function onInitialize($connect)
     {
         $this->di->setShared('message', function () {
-            return new Message\Group();
+            return new Group();
         });
-
     }
+
 
     /**
      * 获取数据
      * @param $pa
      */
-    public function getData()
+    public function getData($name = '')
     {
-        return $this->connect->getData();
+        $d = $this->connect->getData();
+        if ($name) {
+            return isset($d[$name]) ?? null;
+        }
+        return $d;
+
     }
+
+
+    public function send($re)
+    {
+        if ($re instanceof \pms\Validation\Message\Group) {
+            # 错误消息
+            $d = $re->toArray();
+            $this->connect->send_error($d['message'], $d['data'], 424);
+        } else {
+            $this->connect->send_succee($re, '成功');
+        }
+    }
+
+
 }

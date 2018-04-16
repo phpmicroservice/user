@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user;
+namespace app\logic;
 
 use Phalcon\Paginator\Adapter\QueryBuilder;
 
@@ -20,7 +20,7 @@ class praise extends \app\Base
     public static function info($id, $type, $user_id)
     {
 
-        $info = model\user_praise::findFirst([
+        $info = \app\model\user_praise::findFirst([
             'to_type= :to_type: and to_numerical =:to_numerical: and user_id=:user_id:',
             'bind' => [
                 'to_type' => $type,

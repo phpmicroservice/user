@@ -38,7 +38,7 @@ class Qq extends Controller
         } else {
             return $this->restful_error($re['msg']);
         }
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -56,7 +56,7 @@ class Qq extends Controller
             $userService = new \logic\user\Qq();
             $re = $userService->relevance($openid, $this->user_id, $re);
             Trace::add('info', $re);
-            return $this->restful_return($re);
+            return $this->send($re);
         } else {
             return $this->restful_error($re['msg']);
         }
@@ -71,7 +71,7 @@ class Qq extends Controller
         $userService = new \logic\user\Qq();
         $re = $userService->quxiao($this->user_id);
         Trace::add('info', $re);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     public function info()
@@ -79,7 +79,7 @@ class Qq extends Controller
         $userService = new \logic\user\Qq();
         $re = $userService->info($this->user_id);
         Trace::add('info', $re);
-        return $this->restful_return($re);
+        return $this->send($re);
 
     }
 

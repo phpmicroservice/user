@@ -28,7 +28,7 @@ class Friend extends \core\CoreController
         ]);
         $service = new \logic\user\Friend();
         $re = $service->add_apply($this->user_id, $data);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -42,7 +42,7 @@ class Friend extends \core\CoreController
         $value = $this->request->get('value', 'int', 0);
         $service = new \logic\user\Friend();
         $re = $service->friend_set($this->user_id, $user_id, $field, $value);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -54,7 +54,7 @@ class Friend extends \core\CoreController
         $user_id = $this->request->get('user_id', 'int', 0);
         $service = new \logic\user\Friend();
         $re = $service->friend_set_info($this->user_id, $user_id);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -65,7 +65,7 @@ class Friend extends \core\CoreController
         $user_id2 = $this->request->get('user_id2', 'int', 0);
         $service = new \logic\user\Friend();
         $re = $service->get_add_friend_type($this->user_id, $user_id2);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -76,7 +76,7 @@ class Friend extends \core\CoreController
         $user_id = $this->request->get('user_id', 'int', 0);
         $service = new \logic\user\Friend();
         $re = $service->del_friend($this->user_id, $user_id);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -89,7 +89,7 @@ class Friend extends \core\CoreController
         $from_user_id = $this->request->get('from_user_id', 'int', 0);
         $service = new \logic\user\Friend();
         $re = $service->apply_ok($this->user_id, $id, $from_user_id);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -103,7 +103,7 @@ class Friend extends \core\CoreController
         ]);
         $service = new \logic\user\Friend();
         $re = $service->add_friend($this->user_id, $data['user_id2']);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -115,7 +115,7 @@ class Friend extends \core\CoreController
         $id = $this->request->get('id', 'int', 0);
         $service = new \logic\user\Friend();
         $re = $service->apply_no($this->user_id, $id);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -131,7 +131,7 @@ class Friend extends \core\CoreController
             'user_id' => $this->user_id,
             'status' => $status
         ], $page);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -147,7 +147,7 @@ class Friend extends \core\CoreController
             'user_id2' => $this->user_id,
             'status' => $status
         ], $page);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -161,7 +161,7 @@ class Friend extends \core\CoreController
         $re = $service->listf([
             'user_id' => $this->user_id
         ], $page);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
 }

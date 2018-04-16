@@ -10,7 +10,7 @@ use app\model\user_realauth;
  * Class RealauthValidator
  * @package app\validator
  */
-class RealauthValidator extends \pms\Validation\Validator;
+class RealauthValidator extends \pms\Validation\Validator
 {
 
     public

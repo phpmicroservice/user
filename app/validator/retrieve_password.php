@@ -9,7 +9,7 @@
 namespace app\validator;
 
 
-class retrieve_password extends \pms\Validation\Validator;
+class retrieve_password extends \pms\Validation\Validator
 {
     /**
      * 执行验证

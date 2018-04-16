@@ -20,7 +20,7 @@ class Email extends Controller
         $email = $this->request->get('email', 'string', '');
         $service = new \logic\user\Email($this->user_id);
         $re = $service->send_security($email);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -31,7 +31,7 @@ class Email extends Controller
     {
         $service = new \logic\user\Email($this->user_id);
         $re = $service->send_relieve();
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -43,7 +43,7 @@ class Email extends Controller
         $security = $this->request->get('security', 'string', uniqid());
         $service = new \logic\user\Email($this->user_id);
         $re = $service->security_relieve($security);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -54,7 +54,7 @@ class Email extends Controller
         $security = $this->request->get('security', 'string', uniqid());
         $service = new \logic\user\Email($this->user_id);
         $re = $service->security_check($security);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -65,6 +65,6 @@ class Email extends Controller
     {
         $service = new \logic\user\Email($this->user_id);
         $re = $service->info();
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 }

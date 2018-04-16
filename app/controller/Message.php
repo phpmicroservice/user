@@ -31,7 +31,7 @@ class Message extends Controller
         $data = $this->getData($p);
         $data['user_id'] = $this->user_id;
         $re = $this->MessageService->read($data);
-        return $this->restful_return($re);
+        return $this->send($re);
 
     }
 
@@ -46,7 +46,7 @@ class Message extends Controller
         $is_read = $this->request->get('is_read', 'int', -1);
 
         $re = $this->MessageService->list4user($this->user_id, $type, $is_read, $page);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -57,7 +57,7 @@ class Message extends Controller
     {
         $id = $this->request->get('id', 'int', 0);
         $re = $this->MessageService->info4user($this->user_id, $id);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -73,6 +73,6 @@ class Message extends Controller
         $data = $this->getData($p);
         $data['user_id'] = $this->user_id;
         $re = $this->MessageService->send($this->user_id, $data['to_user_id'], $data['title'], $data['content']);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 }

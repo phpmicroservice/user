@@ -31,7 +31,7 @@ class Tag extends Controller
         $data['user_id'] = $this->user_id;
         $Tag = new \logic\user\Tag();
         $re = $Tag->relation($data);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
 

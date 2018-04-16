@@ -69,7 +69,7 @@ class Reg extends \pms\Validation
         $this->add_exist('username', [
             'class_name_list' => user::class,
             'reverse' => true,
-            'message' => 'username',
+            'message' => 'exist',
             'cancelOnFail' => true,
             'function_name' => 'findFirstByUsername'
         ]);

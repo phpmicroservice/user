@@ -126,7 +126,6 @@ $di->setShared('logger', function () {
  * configuration file
  */
 $di["db"] = function () use ($di) {
-    var_dump($di['config']->database);
     return new DbAdapter(
         [
             "host" => getenv('MYSQL_HOST'),

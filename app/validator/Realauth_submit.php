@@ -10,7 +10,7 @@ use app\model\user_realauth;
  * Class Realauth_submit
  * @package app\validator
  */
-class Realauth_submit extends \pms\Validation\Validator;
+class Realauth_submit extends \pms\Validation\Validator
 {
     public
     function validate(\Phalcon\Validation $validation, $attribute)

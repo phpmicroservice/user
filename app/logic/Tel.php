@@ -1,7 +1,6 @@
 <?php
 
-namespace logic\user;
-
+namespace app\logic;
 
 use app\model\user_tel;
 use app\validation\edit_tel;

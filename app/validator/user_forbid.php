@@ -10,7 +10,7 @@ use app\model\user;
  * Class user_forbid
  * @package app\validator
  */
-class user_forbid extends \pms\Validation\Validator;
+class user_forbid extends \pms\Validation\Validator
 {
     public
     function validate(\Phalcon\Validation $validation, $attribute)

@@ -1,8 +1,7 @@
 <?php
 
-namespace logic\user;
+namespace app\logic;
 
-use core\Sundry\Trace;
 use app\model\user_qq;
 use app\model\user_qq_info;
 use logic\user\service\Login;

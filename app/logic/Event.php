@@ -1,7 +1,6 @@
 <?php
 
-
-namespace logic\user;
+namespace app\logic;
 
 /**
  * 模块模块事件执行器

@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user;
+namespace app\logic;
 
 /**
  *
@@ -36,8 +36,8 @@ class Message extends \app\Base
      */
     public function info4user($user_id, $id)
     {
-        $model = model\user_message::findFirstByid($id);
-        if (!($model instanceof model\user_message)) {
+        $model = \app\model\user_message::findFirstByid($id);
+        if (!($model instanceof \app\model\user_message)) {
             return '_empty-error';
         }
         if ($model->to_uid == $user_id || $model->from_uid == $user_id) {

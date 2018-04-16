@@ -1,16 +1,11 @@
 <?php
+
+namespace app\logic;
 /**
- * Created by PhpStorm.
- * User: dongasai
- * Date: 17-9-16
- * Time: 下午6:15
+ * 任务
+ * Class Task
+ * @package app\logic
  */
-
-namespace logic\user;
-
-
-use core\Sundry\Trace;
-
 class Task
 {
 

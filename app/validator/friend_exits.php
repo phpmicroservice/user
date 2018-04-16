@@ -9,10 +9,10 @@ use app\model\user_friend;
  * Class friend_exits
  * @package app\validator
  */
-class friend_exits extends \pms\Validation\Validator;
+class friend_exits extends \pms\Validation\Validator
 {
-    protected
-    $message = 'friend_exits';
+    protected $message = 'friend_exits';
+
     /**
      * 验证
      * @param \Phalcon\Validation $validation

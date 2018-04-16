@@ -1,16 +1,12 @@
 <?php
+
+namespace app\logic;
+
 /**
- * Created by PhpStorm.
- * User: saisai
- * Date: 17-7-13
- * Time: 上午11:20
+ * 规则权限
+ * Class role
+ * @package app\logic
  */
-
-namespace logic\user;
-
-
-use core\Sundry\Trace;
-
 class role extends \Phalcon\Di\Injectable
 {
     /**

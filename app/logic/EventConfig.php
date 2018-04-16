@@ -1,6 +1,7 @@
 <?php
 
-namespace logic\user;
+namespace app\logic;
+
 /**
  * Created by PhpStorm.
  * User: saisai

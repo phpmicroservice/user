@@ -15,7 +15,7 @@ class User extends Controller
     public function rbac()
     {
         $info = \logic\rbac\Role::user($this->user_id);
-        return $this->restful_return($info);
+        return $this->send($info);
     }
 
 
@@ -24,7 +24,7 @@ class User extends Controller
         $new_username = $this->request->get('username', 'string', '');
         $User = new \logic\user\User();
         $re = $User->edit_username($this->user_id, $new_username);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -41,7 +41,7 @@ class User extends Controller
         $data = $this->getData($parameter);
         $User = new \logic\user\Password();
         $re = $User->edit_password($this->user_id, $data);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
 

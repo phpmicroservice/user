@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user;
+namespace app\logic;
 
 use app\validation\edit_username;
 use Phalcon\Di;
@@ -21,7 +21,7 @@ class User extends \app\Base
      */
     public static function get_userlist_uidarr($uidarr)
     {
-        $list = model\user::get_for_list($uidarr);
+        $list = \app\model\user::get_for_list($uidarr);
         $list2 = \tool\Arr::array_change_index($list->toArray(), 'id');
         return $list2;
     }
@@ -32,7 +32,7 @@ class User extends \app\Base
      */
     public static function user_info($user_id): array
     {
-        $model = model\user::user_info($user_id);
+        $model = \app\model\user::user_info($user_id);
         if (is_object($model)) {
             return $model->toArray();
         } else {

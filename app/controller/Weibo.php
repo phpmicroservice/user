@@ -28,14 +28,14 @@ class Weibo extends Controller
         ]);
         $service = new \logic\user\Weibo();
         $re = $service->edit($this->user_id, $data);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     public function info()
     {
         $service = new \logic\user\Weibo();
         $re = $service->info_user($this->user_id);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
 }

@@ -26,7 +26,7 @@ class Collect extends Controller
         $data['user_id'] = $this->user_id;
         $CollectS = new \logic\user\collect();
         $re = $CollectS->clear($data);
-        return $this->restful_return($re);
+        return $this->send($re);
 
     }
 
@@ -39,6 +39,6 @@ class Collect extends Controller
         $data['user_id'] = $this->user_id;
         $CollectS = new \logic\user\collect();
         $re = $CollectS->add($data);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 }

@@ -26,7 +26,7 @@ class Praise extends Controller
             'to_numerical' => $re_id
         ];
         $re = $Praise->add($data);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -44,7 +44,7 @@ class Praise extends Controller
             'to_numerical' => $re_id
         ];
         $re = $Praise->clear2($data);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -63,6 +63,6 @@ class Praise extends Controller
             'praise_type' => $praise_type
         ];
         $re = $Praise->praise_list($data, $page, 10);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 }

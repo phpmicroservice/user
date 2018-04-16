@@ -9,10 +9,9 @@ use app\model\user;
  * Class user_exist
  * @package app\validator
  */
-class user_exist extends \pms\Validation\Validator;
+class user_exist extends \pms\Validation\Validator
 {
-    protected
-    $message = 'user_exist';
+    protected $message = 'user_exist';
     /**
      * @param \Phalcon\Validation $validation
      * @param string $attribute

@@ -24,7 +24,7 @@ class Options extends Controller
         $value = $this->request->get('value', 'int', 0);
         $config = new Options();
         $re = $config->set_config($this->user_id, $name, $value);
-        return $this->restful_return($re);
+        return $this->send($re);
 
     }
 

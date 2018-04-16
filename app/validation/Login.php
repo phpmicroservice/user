@@ -2,14 +2,14 @@
 
 namespace app\validation;
 
-use core\Validator\RequiredPro;
+use pms\Validation\Validator\RequiredPro;
 use app\validator\user_forbid;
 
 /**
  * 登录数据验证
  * @author Dongasai
  */
-class Login extends \pms\CoreValidation
+class Login extends \pms\Validation
 {
 
 //定义验证规则
@@ -54,18 +54,6 @@ class Login extends \pms\CoreValidation
             'name' => user_forbid::class,
             'message' => 'user_forbid'
         ]);
-
-        # 图形验证码验证
-        if ($this->Config->get('login_verification_code')) {
-            # 增加图形验证码验证
-            $this->add_Validator('captcha', [
-                'cancelOnFail' => true,
-                'name' => \logic\Common\validator\verify::class,
-                'message' => 'verify',
-                'config_index' => 'verify'
-            ]);
-        }
-
 
         return parent::initialize();
     }

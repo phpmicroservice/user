@@ -9,7 +9,7 @@ use app\model\user_tel;
  * Class TelValidator
  * @package app\validator
  */
-class TelValidator extends \pms\Validation\Validator;
+class TelValidator extends \pms\Validation\Validator
 {
     public
     function validate(\Phalcon\Validation $validation, $attribute)

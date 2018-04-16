@@ -20,7 +20,7 @@ class Lv extends Controller
         $user_id = $this->request->get('user_id', 'int', 0);
         $service = new \logic\user\Lv();
         $re = $service->info($user_id);
-        return $this->restful_return($re);
+        return $this->send($re);
 
     }
 
@@ -33,7 +33,7 @@ class Lv extends Controller
 
         $service = new \logic\user\Lv();
         $re = $service->info($this->user_id);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
 

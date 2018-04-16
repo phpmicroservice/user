@@ -1,14 +1,12 @@
 <?php
+
+namespace app\logic;
+
 /**
- * Created by PhpStorm.
- * User: saisai
- * Date: 17-6-28
- * Time: 下午5:53
+ *
+ * Class collect
+ * @package app\logic
  */
-
-namespace logic\user;
-
-
 class collect extends \app\Base
 {
     /**
@@ -19,7 +17,7 @@ class collect extends \app\Base
      */
     public static function is_collect($re_id, $type, $user_id)
     {
-        $info = model\user_collect::findFirst([
+        $info = \app\model\user_collect::findFirst([
             'user_id =:user_id: and type = :type: and numerical =:numerical: ', 'bind' => [
                 'user_id' => $user_id,
                 'type' => $type,

@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user;
+namespace app\logic;
 
 use core\Sundry\Trace;
 use app\model\user_email;

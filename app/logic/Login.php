@@ -2,9 +2,6 @@
 
 namespace app\logic;
 
-use core\ReturnMsg;
-use core\Sundry\Trace;
-use logic\user\Event;
 use app\model\user_tel;
 use app\validator\user_exist;
 use app\validator\user_forbid;
@@ -46,19 +43,7 @@ class Login extends \app\Base
     private function loginLater($user_id)
     {
         $this->session->set('user_id', $user_id);
-        $session_id = $this->session->getId();
-        $cachekey = \tool\Arr::array_md5([
-            $session_id, 'userid'
-        ]);
-        //写
-        $this->RCache->save($cachekey, $user_id, 604800);
-        //进行登陆后操作
-        $Event = Event::getInstance();
-        $re = $Event->notice('loginLater', ['user_id' => $user_id], true);
-        if ($re === false) {
-            //执行 钩子 出错!
-            return '_error-notice';
-        }
+        return session_id();
     }
 
     /**
@@ -88,7 +73,6 @@ class Login extends \app\Base
      */
     public function loginAction($data)
     {
-        Trace::add('loginAction', $data);
 
         $validation = new \app\validation\Login();
         //进行验证

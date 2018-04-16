@@ -26,7 +26,7 @@ class Index extends Controller
         $user_id = $this->request->get('user_id', 'int', 0);
         $user = new Info();
         $ser = $user->p_info($user_id);
-        return $this->restful_return($ser);
+        return $this->send($ser);
     }
 
 
@@ -39,7 +39,7 @@ class Index extends Controller
         $tel = $this->request->get('tel', 'string', 0);
         $user_Tel = new Tel();
         $ser = $user_Tel->tel_is_reg($tel);
-        return $this->restful_return($ser);
+        return $this->send($ser);
     }
 
 
@@ -49,10 +49,10 @@ class Index extends Controller
      */
     public function find_user()
     {
-        $username = $this->request->get('username', 'string', '');
+        $username = $this->getData('username');
         $service = new \logic\user\User();
         $re = $service->find_user($username);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
@@ -60,31 +60,23 @@ class Index extends Controller
      */
     public function login()
     {
-        if ($this->request->isPost()) {
-            $data['username'] = $this->request->getPost('username');
-            $data['password'] = $this->request->getPost('password');
-            $data['captcha'] = $this->request->getPost('img_captcha');
-            $Login = new \logic\user\service\Login();
-            $re = $Login->loginAction($data);
-            return $this->restful_return($re);
-        } else {
-            return $this->restful_error('error');
-        }
+        $data = $this->getData();
+        $Login = new \app\logic\Login();
+        $re = $Login->loginAction($data);
+        output(session_id(), 'session');
+        return $this->send($re);
     }
 
+    /**
+     * 手机登录
+     * @return mixed
+     */
     public function tel_login()
     {
-        if ($this->request->isPost()) {
-            $data['tel'] = $this->request->getPost('tel');
-            $data['password'] = $this->request->getPost('password');
-            $data['captcha'] = $this->request->getPost('img_captcha');
-            $Login = new \logic\user\service\Login();
-            $re = $Login->tel_login($data);
-            return $this->restful_return($re);
-        } else {
-            return $this->restful_error('error');
-        }
-
+        $data = $this->getData();
+        $Login = new \app\logic\Login();
+        $re = $Login->tel_login($data);
+        return $this->send($re);
     }
 
     /**
@@ -102,7 +94,7 @@ class Index extends Controller
         $user_id = $this->request->getPost('user_id');
         $Login = new Login();
         $re = $Login->s_login($user_id);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
 
@@ -114,23 +106,18 @@ class Index extends Controller
         $data = $this->getData();
         $Reg = new \app\logic\Reg();
         $re = $Reg->regAction($data);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
     /**
      * 判断是否登录
      * @return type
      */
-    public function is_login()
+    public function islogin()
     {
 //        $this->request->getHTTPReferer()
-        $uid = \logic\user\User::is_login();
-        if ($uid) {
-            //成功
-            return $this->restful(ReturnMsg::create(200, '_success', ['user_id' => $uid, 'role' => \logic\user\User::role()]));
-        } else {
-            return $this->restful(ReturnMsg::create(401, '_no login'));
-        }
+        $uid = \app\logic\User::is_login();
+        $this->send($uid);
     }
 
     /**
@@ -149,7 +136,7 @@ class Index extends Controller
         $data = $this->getData($parameter);
         $User = new \logic\user\Password();
         $re = $User->retrieve_password($data);
-        return $this->restful_return($re);
+        return $this->send($re);
     }
 
 

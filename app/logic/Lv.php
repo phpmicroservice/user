@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user;
+namespace app\logic;
 
 use app\model\user_lv;
 
@@ -38,7 +38,7 @@ class Lv extends \app\Base
      */
     public function info($user_id)
     {
-        $modelList = model\user_lv::findByuser_id($user_id);
+        $modelList = \app\model\user_lv::findByuser_id($user_id);
         $data = $modelList->toArray();
 
         return array_column($data, null, 'identifying');

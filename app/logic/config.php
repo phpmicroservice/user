@@ -1,9 +1,7 @@
 <?php
 
-namespace logic\user;
+namespace app\logic;
 
-
-use core\Sundry\Trace;
 use app\model\user_config;
 use app\validation\set_config;
 
