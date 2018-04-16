@@ -7,7 +7,6 @@ use Phalcon\Events\Event;
 /**
  * 引导类,初始化
  * Class guidance
- * @property \app\table\server $server_table
  * @package app
  */
 class Guidance extends \Phalcon\Di\Injectable

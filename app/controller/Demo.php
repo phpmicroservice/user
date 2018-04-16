@@ -7,6 +7,9 @@ namespace app\controller;
 class Demo extends \pms\Controller
 {
 
+    /**
+     * @param $data
+     */
     public function index($data)
     {
         $this->connect->send_succee([
