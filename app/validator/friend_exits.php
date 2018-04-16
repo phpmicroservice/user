@@ -1,13 +1,13 @@
 <?php
 
-namespace logic\user\validator;
+namespace app\validator;
 
-use logic\user\model\user_friend;
+use app\model\user_friend;
 
 /**
  * 判断是否为好友
  * Class friend_exits
- * @package logic\user\validator
+ * @package app\validator
  */
 class friend_exits extends \pms\Validation\Validator;
 {

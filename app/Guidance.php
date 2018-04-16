@@ -32,9 +32,6 @@ class Guidance extends \Phalcon\Di\Injectable
         output('beforeStart  beforeStart', 'beforeStart');
         # 写入依赖注入
 
-
-
-        $this->server_table;
     }
 
     /**

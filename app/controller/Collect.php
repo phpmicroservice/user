@@ -1,6 +1,6 @@
 <?php
 
-namespace apps\user\controllers;
+namespace app\controller;
 
 use app\Controller;
 
@@ -8,7 +8,7 @@ use app\Controller;
 /**
  * 收藏控制器
  * Class CollectController
- * @package apps\user\controllers
+ * @package app\controller
  */
 class Collect extends Controller
 {

@@ -1,15 +1,15 @@
 <?php
 
 
-namespace logic\user\validator;
+namespace app\validator;
 
-use logic\user\model\user_authentication;
+use app\model\user_authentication;
 
 
 /**
  * 进行 增加验证
  * Class add_authentication
- * @package logic\user\validator
+ * @package app\validator
  */
 class add_authentication extends \Phalcon\Validation\Validator
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace logic\user\service;
+namespace app\logic;
 
 use core\ReturnMsg;
 use core\Sundry\Trace;
 use logic\user\Event;
-use logic\user\model\user_tel;
-use logic\user\validator\user_exist;
-use logic\user\validator\user_forbid;
+use app\model\user_tel;
+use app\validator\user_exist;
+use app\validator\user_forbid;
 
 /**
  * Description of Login
@@ -90,7 +90,7 @@ class Login extends \app\Base
     {
         Trace::add('loginAction', $data);
 
-        $validation = new \logic\user\validation\Login();
+        $validation = new \app\validation\Login();
         //进行验证
         if (!$validation->validate($data)) {
             return ReturnMsg::create(406, $validation->getMessage());
@@ -98,7 +98,7 @@ class Login extends \app\Base
         if ($data['user_id']) {
             return $this->loginLater($data['user_id']);
         } else {
-            $info = \logic\user\model\user::findFirstByUsername($data['username']);
+            $info = \app\model\user::findFirstByUsername($data['username']);
             //登录验证通过
             return $this->loginLater($info->id);
         }

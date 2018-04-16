@@ -1,15 +1,15 @@
 <?php
 
-namespace logic\user\validation;
+namespace app\validation;
 
-use logic\user\model\user_friend;
-use logic\user\model\user_friend_apply;
-use logic\user\validator\user_exist;
+use app\model\user_friend;
+use app\model\user_friend_apply;
+use app\validator\user_exist;
 
 /**
  *
  * Class add_apply
- * @package logic\user\validation
+ * @package app\validation
  */
 class add_apply extends \pms\Validation
 {

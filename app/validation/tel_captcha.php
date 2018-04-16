@@ -1,13 +1,13 @@
 <?php
 
-namespace logic\user\validation;
+namespace app\validation;
 
-use logic\user\validator\user_exist;
+use app\validator\user_exist;
 
 /**
  * 手机验证码
  * Class tel_captcha
- * @package logic\user\validation
+ * @package app\validation
  */
 class tel_captcha extends \pms\CoreValidation
 {

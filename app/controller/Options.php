@@ -1,6 +1,6 @@
 <?php
 
-namespace apps\user\controllers;
+namespace app\controller;
 
 use app\Controller;
 use logic\user\config;
@@ -9,7 +9,7 @@ use logic\user\config;
 /**
  * 设置控制器
  * Class ConfigController
- * @package apps\user\controllers
+ * @package app\controller
  */
 class Options extends Controller
 {

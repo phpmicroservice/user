@@ -1,7 +1,7 @@
 <?php
 
 
-namespace logic\user\validation;
+namespace app\validation;
 
 
 class add_authentication_facilitator_1 extends \pms\CoreValidation

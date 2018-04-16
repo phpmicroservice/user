@@ -1,18 +1,24 @@
 <?php
 
-namespace logic\user\validation;
+namespace app\validation;
 
-use logic\user\model\user;
+use app\model\user;
 
 /**
  * Description of Reg
  *
  * @author Dongasai
  */
-class Reg extends \pms\CoreValidation
+class Reg extends \pms\Validation
 {
-
-//定义验证规则
+    # 定义过滤规则
+    protected $filter_rule = [
+        ['username', 'string'],
+        ['password', 'string'],
+        ['password2', 'string'],
+        ['nickname', 'string'],
+    ];
+    # 定义验证规则
     protected $rule = [
         'username' => [
             'required' => [
@@ -67,15 +73,8 @@ class Reg extends \pms\CoreValidation
             'cancelOnFail' => true,
             'function_name' => 'findFirstByUsername'
         ]);
-        # 手机验证码
-        $this->add_Validator('tel', [
-            'name' => \logic\Common\Verification\TelValidator::class,
-            'message' => 'Verification',
-            'captcha_name' => 'phone_captcha',
-            'prefix' => 'reg',
-            'cancelOnFail' => true,
-        ]);
-        $this->add_tel('tel');
+
+
         return parent::initialize();
     }
 

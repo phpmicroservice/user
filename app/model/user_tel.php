@@ -1,11 +1,11 @@
 <?php
 
-namespace logic\user\model;
+namespace app\model;
 
 /**
  * 用户手机关联
  * Class user_tel
- * @package logic\user\model
+ * @package app\model
  */
 class user_tel extends \pms\Mvc\Model
 {

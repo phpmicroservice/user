@@ -1,13 +1,13 @@
 <?php
 
-namespace apps\user\controllers;
+namespace app\controller;
 
 use app\Controller;
 
 /**
  * 消息 message
  * Class MessageController
- * @package apps\user\controllers
+ * @package app\controller
  * @property \logic\user\Message $MessageService
  */
 class Weibo extends Controller

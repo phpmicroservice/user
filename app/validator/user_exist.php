@@ -1,13 +1,13 @@
 <?php
 
-namespace logic\user\validator;
+namespace app\validator;
 
-use logic\user\model\user;
+use app\model\user;
 
 /**
  * 判断用户是否存在
  * Class user_exist
- * @package logic\user\validator
+ * @package app\validator
  */
 class user_exist extends \pms\Validation\Validator;
 {

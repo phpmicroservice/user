@@ -18,7 +18,7 @@ class User extends CoreService
     {
 
 
-        $info = \logic\user\model\user::findFirst(
+        $info = \app\model\user::findFirst(
             [
                 'conditions' => 'id = :id:',
                 'bind' => ['id' => $user_id],
@@ -36,8 +36,8 @@ class User extends CoreService
      */
     public static function is_exist($user_id)
     {
-        //$re1= \logic\user\model\User::findFirst();
-        $re1 = \logic\user\model\user::findFirstById($user_id);
+        //$re1= \app\model\User::findFirst();
+        $re1 = \app\model\user::findFirstById($user_id);
         if ($re1) {
             return true;
         } else {
@@ -58,7 +58,7 @@ class User extends CoreService
         Trace::add('info', func_get_args());
         $modelsManager = $this->modelsManager;
         $builder = $modelsManager->createBuilder()
-            ->from(\logic\user\model\user::class)
+            ->from(\app\model\user::class)
             ->columns('id,username,email,forbid,init,edit_username,create_time')->orderBy("id");
 
         $builder = $this->call_where($builder, $where);
@@ -100,7 +100,7 @@ class User extends CoreService
      */
     public function reset_password($user_id)
     {
-        $userModel = new \logic\user\model\user();
+        $userModel = new \app\model\user();
         $data = $userModel->findFirstById($user_id);
         if ($data === false) {
             return "_user-inexistence";
@@ -121,7 +121,7 @@ class User extends CoreService
      */
     public function forbid($user_id)
     {
-        $userModel = new \logic\user\model\user();
+        $userModel = new \app\model\user();
         $data = $userModel->findFirstById($user_id);
         if ($data === false) {
             return "_user-inexistence";
@@ -141,7 +141,7 @@ class User extends CoreService
      */
     public function clear_forbid($user_id)
     {
-        $userModel = new \logic\user\model\user();
+        $userModel = new \app\model\user();
         $data = $userModel->findFirstById($user_id);
         if ($data === false) {
             return "_user-inexistence";

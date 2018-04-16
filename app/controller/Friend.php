@@ -1,11 +1,11 @@
 <?php
 
-namespace apps\user\controllers;
+namespace app\controller;
 
 /**
  * 好友的控制器 friend
  * Class FriendController
- * @package apps\user\controllers
+ * @package app\controller
  */
 class Friend extends \core\CoreController
 {

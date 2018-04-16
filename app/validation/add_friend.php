@@ -1,10 +1,10 @@
 <?php
 
-namespace logic\user\validation;
+namespace app\validation;
 
 
-use logic\user\model\user_config;
-use logic\user\model\user_friend;
+use app\model\user_config;
+use app\model\user_friend;
 
 class add_friend extends \pms\CoreValidation
 {

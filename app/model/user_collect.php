@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user\model;
+namespace app\model;
 
 /**
  * 用户收藏表模型

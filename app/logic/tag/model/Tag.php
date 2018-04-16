@@ -1,13 +1,13 @@
 <?php
 
-namespace logic\user\Tag\model;
+namespace app\logic\tag\model;
 /**
  * Created by PhpStorm.
  * User: saisai
  * Date: 17-6-5
  * Time: 下午2:44
  */
-class Tag extends \core\CoreModel
+class Tag extends \pms\Mvc\Model
 {
     /**
      * @param $tag_id_list

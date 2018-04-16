@@ -6,10 +6,10 @@
  * Time: 14:56
  */
 
-namespace logic\user\validation;
+namespace app\validation;
 
 
-use logic\user\validator\friend_exits;
+use app\validator\friend_exits;
 
 class friend_set extends \pms\CoreValidation
 {

@@ -1,14 +1,14 @@
 <?php
 
 
-namespace apps\user\controllers;
+namespace app\controller;
 
 use app\Controller;
 
 /**
  * 速评的控制器 praise
  * Class Praise
- * @package apps\user\controllers
+ * @package app\controller
  */
 class Praise extends Controller
 {

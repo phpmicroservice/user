@@ -5,8 +5,8 @@ namespace logic\user;
 use app\Base;
 
 use core\Sundry\Trace;
-use logic\user\model\user_info;
-use logic\user\validation\edit_info;
+use app\model\user_info;
+use app\validation\edit_info;
 use PayPal\Api\FileAttachment;
 use tool\Arr;
 
@@ -78,7 +78,7 @@ class Info extends Base
         # 读取基本信息
         $Builde = $this->modelsManager->createBuilder();
         $mode = $Builde->from(['user_info' => user_info::class])
-            ->join(\logic\user\model\user::class, 'user_info.user_id = user.id', 'user')
+            ->join(\app\model\user::class, 'user_info.user_id = user.id', 'user')
             ->columns('user_info.*,user.*')
             ->where('user_id=:user_id:', ['user_id' => $user_id])
             ->getQuery()->execute();
@@ -102,7 +102,7 @@ class Info extends Base
         # 读取基本信息
         $Builde = $this->modelsManager->createBuilder();
         $mode = $Builde->from(['user_info' => user_info::class])
-            ->join(\logic\user\model\user::class, 'user_info.user_id = user.id', 'user')
+            ->join(\app\model\user::class, 'user_info.user_id = user.id', 'user')
             ->where('user_info.user_id=:user_id:', ['user_id' => $user_id])
             ->columns('user_info.gender as gender,            user_info.user_id as user_id,  user_info.birthday as birthday,user_info.personalized as personalized,user_info.area as area,user_info.headimg as headimg,user_info.nickname as nickname,user.username as username')
             ->getQuery()->execute();

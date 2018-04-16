@@ -1,15 +1,15 @@
 <?php
 
 
-namespace logic\user\validation;
+namespace app\validation;
 
 use logic\Common\validator\area;
-use logic\user\validator\user_exist;
+use app\validator\user_exist;
 
 /**
  * 用户信息验证
  * Class edit_info
- * @package logic\user\validation
+ * @package app\validation
  */
 class edit_info extends \pms\CoreValidation
 {

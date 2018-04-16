@@ -6,12 +6,12 @@
  * Time: 11:52
  */
 
-namespace logic\user\validation;
+namespace app\validation;
 
 /**
  * 增加 用户
  * Class add_user
- * @package logic\user\validation
+ * @package app\validation
  */
 class add_user extends \pms\CoreValidation
 {
@@ -29,7 +29,7 @@ class add_user extends \pms\CoreValidation
             ],
             'uq' => [
                 'message' => 'usernmae',
-                'model' => 'logic\user\model\user'
+                'model' => 'app\model\user'
             ]
         ],
         'password' => [

@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace logic\user\model;
+namespace app\model;
 
 /**
  * Description of user_praise

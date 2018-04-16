@@ -2,7 +2,7 @@
 
 namespace logic\user;
 
-use logic\user\validation\edit_username;
+use app\validation\edit_username;
 use Phalcon\Di;
 
 /**
@@ -107,7 +107,7 @@ class User extends \app\Base
         }
 
         # 验证通过
-        $userModel = \logic\user\model\user::findFirstById($user_id);
+        $userModel = \app\model\user::findFirstById($user_id);
         $userModel->username = $new_username;
         $userModel->edit_username = 1;
         if (!$userModel->save()) {
@@ -123,7 +123,7 @@ class User extends \app\Base
     public function init_user()
     {
         # 读取等待初始化的用户
-        $user_list = \logic\user\model\user::find([
+        $user_list = \app\model\user::find([
             'init = 0',
             'limit' => 10
         ]);

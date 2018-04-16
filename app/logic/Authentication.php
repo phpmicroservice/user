@@ -4,7 +4,7 @@ namespace logic\user;
 
 use core\CoreValidation;
 
-use logic\user\validator\add_authentication;
+use app\validator\add_authentication;
 
 /**
  * 认证的服务层
@@ -229,7 +229,7 @@ class Authentication extends \app\Base
      */
     private function add_authentication_client($data)
     {
-        $validation = new \logic\user\validation\authentication_info_client();
+        $validation = new \app\validation\authentication_info_client();
         $validation->validate($data);
         if ($validation->isError()) {
             return $validation->getMessage();
@@ -241,7 +241,7 @@ class Authentication extends \app\Base
         $attachment = new \logic\Common\attachment();
 
 
-        $user_authentication_info_client = new \logic\user\model\user_authentication_client();
+        $user_authentication_info_client = new \app\model\user_authentication_client();
         $old_date = $user_authentication_info_client->findFirst(
             ['conditions' => 'user_id = :user_id:', 'bind' => ['user_id' => $data['user_id']]]
         );
@@ -311,7 +311,7 @@ class Authentication extends \app\Base
         if ($va->isError()) {
             return $va->getMessage();
         }
-        $user_authentication = new \logic\user\model\user_authentication();
+        $user_authentication = new \app\model\user_authentication();
         $data['create_time'] = time();
         $data['update_time'] = 0;
         $data['status'] = 0;

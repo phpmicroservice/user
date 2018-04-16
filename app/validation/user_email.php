@@ -6,10 +6,10 @@
  * Time: 15:32
  */
 
-namespace logic\user\validation;
+namespace app\validation;
 
 
-use logic\user\validator\user_exist;
+use app\validator\user_exist;
 
 class user_email extends \pms\CoreValidation
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace apps\user\controllers;
+namespace app\controller;
 
 use app\Controller;
-use logic\user\Info;
-use logic\user\service\Login;
-use logic\user\Tel;
+use app\logic\Info;
+use app\logic\Login;
+use app\logic\Tel;
 
 /**
  * Class IndexController
- * @package apps\user\controllers
+ * @package app\controller
  */
 class Index extends Controller
 {
@@ -111,17 +111,8 @@ class Index extends Controller
      */
     public function reg()
     {
-        $pa = [
-            'nickname' => ['post', 'nickname', 'string', 'nickname'],
-            'username' => ['post', 'username', 'string', ''],
-            'tel' => ['post', 'tel', 'string', ''],
-            'password' => ['post', 'password', 'string', ''],
-            'password2' => ['post', 'password2', 'string', ''],
-            'email' => ['post', 'email', 'string', ''],
-            'phone_captcha' => ['post', 'captcha', 'string', ''],
-        ];
-        $data = $this->getData($pa);
-        $Reg = new \logic\user\service\Reg();
+        $data = $this->getData();
+        $Reg = new \app\logic\Reg();
         $re = $Reg->regAction($data);
         return $this->restful_return($re);
     }

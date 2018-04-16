@@ -1,15 +1,15 @@
 <?php
 
 
-namespace logic\user\validation;
+namespace app\validation;
 
-use logic\user\model\user_tel;
-use logic\user\validator\user_exist;
+use app\model\user_tel;
+use app\validator\user_exist;
 
 /**
  * 手机修改验证 验证集
  * Class edit_tel
- * @package logic\user\validation
+ * @package app\validation
  */
 class edit_tel extends \pms\CoreValidation
 {

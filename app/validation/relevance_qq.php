@@ -1,14 +1,14 @@
 <?php
 
-namespace logic\user\validation;
+namespace app\validation;
 
-use logic\user\model\user_qq;
-use logic\user\validator\user_exist;
+use app\model\user_qq;
+use app\validator\user_exist;
 
 /**
  * QQ关联验证
  * Class relevance_qq
- * @package logic\user\validation
+ * @package app\validation
  */
 class relevance_qq extends \pms\CoreValidation
 {

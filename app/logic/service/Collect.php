@@ -24,7 +24,7 @@ class Collect extends \app\Base
         $builder = $modelsManager->createBuilder()
             ->where('user_id =' . $user_id)
             ->andwhere(' type = "' . strtolower($type) . '"')
-            ->from(\logic\user\model\user_collect::class)
+            ->from(\app\model\user_collect::class)
             ->groupBy("id")
             ->orderBy("id");
         $paginator = new \Phalcon\Paginator\Adapter\QueryBuilder(
@@ -92,12 +92,12 @@ class Collect extends \app\Base
     {
         $data['create_time'] = time();
         # 进行验证
-        $validation = new \logic\user\validation\Collect();
+        $validation = new \app\validation\Collect();
         $validation->validate($data);
         if ($validation->getMessage()) {
             return $validation->getMessage();
         }
-        $user_collectModel = new \logic\user\model\user_collect();
+        $user_collectModel = new \app\model\user_collect();
         $user_collectModel->setData($data);
         $re = $user_collectModel->save();
         if ($re === false) {

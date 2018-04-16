@@ -3,10 +3,10 @@
 namespace logic\user;
 
 use core\Sundry\Trace;
-use logic\user\model\user_qq;
-use logic\user\model\user_qq_info;
+use app\model\user_qq;
+use app\model\user_qq_info;
 use logic\user\service\Login;
-use logic\user\validation\relevance_qq;
+use app\validation\relevance_qq;
 
 class Qq extends \app\Base
 {

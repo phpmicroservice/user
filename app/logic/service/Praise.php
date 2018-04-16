@@ -45,9 +45,9 @@ class Praise extends \app\Base
      */
     public static function add($data)
     {
-        $user_praiseModel = new \logic\user\model\user_praise();
+        $user_praiseModel = new \app\model\user_praise();
         # 进行验证
-        $validation = new \logic\user\validation\Praise();
+        $validation = new \app\validation\Praise();
         $validation->setRepetition($user_praiseModel, $data); # 设置重复验证
         $validation->validate($data);
         if ($validation->getMessage()) {

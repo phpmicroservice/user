@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user\validator;
+namespace app\validator;
 
 use core\Sundry\Trace;
 
@@ -29,9 +29,9 @@ class passwordValidator extends \Phalcon\Validation\Validator
         if (empty($username)) {
             # 不存在用户名
             Trace::add('info30', $user_id);
-            $passwordHashModel = \logic\user\model\user::findFirstById($user_id);
+            $passwordHashModel = \app\model\user::findFirstById($user_id);
         } else {
-            $passwordHashModel = \logic\user\model\user::findFirstByUsername($username);
+            $passwordHashModel = \app\model\user::findFirstByUsername($username);
         }
 
         if (!$passwordHashModel or !$Security->checkHash($password, $passwordHashModel->password)) {

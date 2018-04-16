@@ -4,8 +4,8 @@ namespace logic\user;
 
 
 use core\Sundry\Trace;
-use logic\user\model\user_config;
-use logic\user\validation\set_config;
+use app\model\user_config;
+use app\validation\set_config;
 
 /**
  * 用户设置

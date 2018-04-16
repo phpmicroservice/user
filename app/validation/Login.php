@@ -1,9 +1,9 @@
 <?php
 
-namespace logic\user\validation;
+namespace app\validation;
 
 use core\Validator\RequiredPro;
-use logic\user\validator\user_forbid;
+use app\validator\user_forbid;
 
 /**
  * 登录数据验证
@@ -28,7 +28,7 @@ class Login extends \pms\CoreValidation
             ],
             'Validator' => [
                 'cancelOnFail' => true,
-                'name' => 'logic\user\validator\passwordValidator',
+                'name' => 'app\validator\passwordValidator',
                 "message" => "password"
             ],
         ]

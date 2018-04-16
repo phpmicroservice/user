@@ -3,7 +3,7 @@
 namespace logic\user\service;
 
 use core\CoreService;
-use logic\user\model\user_message;
+use app\model\user_message;
 
 /**
  * Class Message 用户消息的服务层
@@ -30,7 +30,7 @@ class Message extends CoreService
             'is_read' => 0,
             'is_del' => 0
         ];
-        $validation = new \logic\user\validation\user_message();
+        $validation = new \app\validation\user_message();
         if ($validation->validate($data) === false) {
             return $validation->getMessage();
         }
@@ -64,7 +64,7 @@ class Message extends CoreService
 
         $modelsManager = \Phalcon\Di::getDefault()->get('modelsManager');
         $builder = $modelsManager->createBuilder()
-            ->from(\logic\user\model\user_message::class)
+            ->from(\app\model\user_message::class)
             ->orderBy("is_read asc,id DESC");
         $builder = $this->call_where($builder, $where);
         $paginator = new \Phalcon\Paginator\Adapter\QueryBuilder(

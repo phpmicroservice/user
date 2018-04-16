@@ -1,14 +1,14 @@
 <?php
 
 
-namespace logic\user\validator;
+namespace app\validator;
 
-use logic\user\model\user_realauth;
+use app\model\user_realauth;
 
 /**
  * 是否可提交验证,状态验证
  * Class Realauth_submit
- * @package logic\user\validator
+ * @package app\validator
  */
 class Realauth_submit extends \pms\Validation\Validator;
 {

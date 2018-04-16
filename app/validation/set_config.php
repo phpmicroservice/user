@@ -1,9 +1,9 @@
 <?php
 
-namespace logic\user\validation;
+namespace app\validation;
 
 
-use logic\user\validator\user_exist;
+use app\validator\user_exist;
 
 class set_config extends \pms\CoreValidation
 {

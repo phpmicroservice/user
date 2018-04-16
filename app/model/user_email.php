@@ -1,14 +1,11 @@
 <?php
+
+namespace app\model;
+
 /**
- * Created by PhpStorm.
- * User: Dongasai
- * Date: 2017/11/6
- * Time: 14:53
+ * Class user_email
+ * @package app\model
  */
-
-namespace logic\user\model;
-
-
 class user_email extends \pms\Mvc\Model
 {
 

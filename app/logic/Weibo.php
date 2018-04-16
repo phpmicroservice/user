@@ -2,7 +2,7 @@
 
 namespace logic\user;
 
-use logic\user\model\user_weibo;
+use app\model\user_weibo;
 
 /**
  * 新浪微博

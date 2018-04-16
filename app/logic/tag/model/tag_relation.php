@@ -1,12 +1,12 @@
 <?php
 
-namespace logic\user\Tag\model;
+namespace app\logic\tag\model;
 
 /**
  * Class tag_relation
  * @package logic\user\Tag\model
  */
-class tag_relation extends \core\CoreModel
+class tag_relation extends \pms\Mvc\Model
 {
     /**
      * 获取这个对象的关联标签id

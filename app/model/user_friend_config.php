@@ -1,14 +1,11 @@
 <?php
+
+namespace app\model;
+
 /**
- * Created by PhpStorm.
- * User: Dongasai
- * Date: 2018/1/28
- * Time: 14:39
+ * Class user_friend_config
+ * @package app\model
  */
-
-namespace logic\user\model;
-
-
 class user_friend_config extends \pms\Mvc\Model
 {
 

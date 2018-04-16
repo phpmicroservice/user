@@ -1,14 +1,14 @@
 <?php
 
-namespace logic\user\validator;
+namespace app\validator;
 
-use logic\user\model\user;
+use app\model\user;
 
 
 /**
  * 账户可用验证 禁用则不通过
  * Class user_forbid
- * @package logic\user\validator
+ * @package app\validator
  */
 class user_forbid extends \pms\Validation\Validator;
 {

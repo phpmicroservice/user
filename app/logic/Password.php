@@ -3,7 +3,7 @@
 namespace logic\user;
 
 use core\Sundry\Trace;
-use logic\user\model\user_tel;
+use app\model\user_tel;
 
 /**
  * 用户密码
@@ -42,7 +42,7 @@ class Password extends \app\Base
             return '_tel-empty';
         }
         $user_id = $telInfo->user_id;
-        $UserModel = \logic\user\model\user::findFirstById($user_id);
+        $UserModel = \app\model\user::findFirstById($user_id);
         if (!$UserModel) {
             Trace::add('info', '找不到用户!');
             return '_empty-info';
@@ -75,7 +75,7 @@ class Password extends \app\Base
         if (!$validation->validate($data)) {
             return $validation->getMessage();
         }
-        $UserModel = \logic\user\model\user::findFirstById($user_id);
+        $UserModel = \app\model\user::findFirstById($user_id);
         $Security = new \Phalcon\Security();
         $new_password = $Security->hash($data['new_password'] . $UserModel->username, 2);
 

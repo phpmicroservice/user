@@ -1,13 +1,13 @@
 <?php
 
-namespace apps\user\controllers;
+namespace app\controller;
 
 use app\Controller;
 
 /**
  * 用户标签控制器
  * Class TagController
- * @package apps\user\controllers
+ * @package app\controller
  */
 class Tag extends Controller
 {

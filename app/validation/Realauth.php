@@ -1,10 +1,10 @@
 <?php
 
-namespace logic\user\validation;
+namespace app\validation;
 
 use logic\Attachment\Validator\picValidator;
-use logic\user\validator\Realauth_submit;
-use logic\user\validator\user_exist;
+use app\validator\Realauth_submit;
+use app\validator\user_exist;
 
 class Realauth extends \pms\CoreValidation
 {

@@ -3,9 +3,9 @@
 namespace logic\user\service;
 
 
-use logic\user\model\user_lv;
-use logic\user\model\user_lv_config;
-use logic\user\model\user_lv_log;
+use app\model\user_lv;
+use app\model\user_lv_config;
+use app\model\user_lv_log;
 
 /**
  * 等级服务

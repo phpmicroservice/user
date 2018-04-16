@@ -2,7 +2,7 @@
 
 namespace logic\user;
 
-use logic\user\model\user_lv;
+use app\model\user_lv;
 
 /**
  * 等级服务层

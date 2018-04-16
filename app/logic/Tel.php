@@ -3,9 +3,9 @@
 namespace logic\user;
 
 
-use logic\user\model\user_tel;
-use logic\user\validation\edit_tel;
-use logic\user\validation\tel_captcha;
+use app\model\user_tel;
+use app\validation\edit_tel;
+use app\validation\tel_captcha;
 
 class Tel extends \app\Base
 {

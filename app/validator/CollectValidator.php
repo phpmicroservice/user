@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user\validator;
+namespace app\validator;
 
 /**
  * Description of CollectValidator
@@ -38,7 +38,7 @@ class CollectValidator extends \Phalcon\Validation\Validator
             return false;
         }
         # 检查信息重复
-        $re = \logic\user\model\user_collect::query()
+        $re = \app\model\user_collect::query()
             ->where("type = '$type'")
             ->addWhere('numerical = ' . $numerical)
             ->andWhere('user_id = ' . $user_id)

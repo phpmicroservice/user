@@ -6,7 +6,7 @@
  * Time: 下午3:02
  */
 
-namespace logic\user\validator;
+namespace app\validator;
 
 
 class retrieve_password extends \pms\Validation\Validator;

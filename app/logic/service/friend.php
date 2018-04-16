@@ -10,7 +10,7 @@ namespace logic\user\service;
 
 
 use core\Sundry\Trace;
-use logic\user\model\user_friend;
+use app\model\user_friend;
 use tool\date;
 
 class friend extends \app\Base

@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace logic\user\validation;
+namespace app\validation;
 
 /**
  * Description of Praise

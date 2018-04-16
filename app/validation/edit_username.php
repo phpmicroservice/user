@@ -1,9 +1,9 @@
 <?php
 
-namespace logic\user\validation;
+namespace app\validation;
 
 
-use logic\user\model\user;
+use app\model\user;
 
 class edit_username extends \pms\CoreValidation
 {

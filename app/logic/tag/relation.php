@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user\Tag;
+namespace app\logic\tag;
 
 /**
  * Created by PhpStorm.

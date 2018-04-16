@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user\model;
+namespace app\model;
 
 /**
  * Description of User

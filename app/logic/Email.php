@@ -3,7 +3,7 @@
 namespace logic\user;
 
 use core\Sundry\Trace;
-use logic\user\model\user_email;
+use app\model\user_email;
 
 /**
  * 邮件相关
@@ -66,7 +66,7 @@ class Email extends \app\Base
             'code' => $code
         ];
         # 进行数据验证
-        $validation = new \logic\user\validation\user_email();
+        $validation = new \app\validation\user_email();
         if (!$validation->validate($data)) {
             return $validation->getMessage();
         }

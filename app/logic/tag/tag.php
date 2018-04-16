@@ -6,7 +6,7 @@
  * Time: 下午4:17
  */
 
-namespace logic\user\Tag;
+namespace app\logic\tag;
 
 
 class tag extends \app\Base

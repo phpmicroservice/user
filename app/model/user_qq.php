@@ -6,7 +6,7 @@
  * Time: 18:25
  */
 
-namespace logic\user\model;
+namespace app\model;
 
 
 class user_qq extends \pms\Mvc\Model

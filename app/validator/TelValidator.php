@@ -1,13 +1,13 @@
 <?php
 
-namespace logic\user\validator;
+namespace app\validator;
 
-use logic\user\model\user_tel;
+use app\model\user_tel;
 
 /**
  * 验证用户手机
  * Class TelValidator
- * @package logic\user\validator
+ * @package app\validator
  */
 class TelValidator extends \pms\Validation\Validator;
 {

@@ -6,7 +6,7 @@
  * Time: 14:21
  */
 
-namespace logic\user\model;
+namespace app\model;
 
 
 class user_info extends \pms\Mvc\Model

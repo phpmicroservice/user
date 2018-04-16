@@ -1,14 +1,14 @@
 <?php
 
-namespace logic\user\validator;
+namespace app\validator;
 
-use logic\user\model\user_realauth;
+use app\model\user_realauth;
 
 
 /**
  * 实名认证判断
  * Class RealauthValidator
- * @package logic\user\validator
+ * @package app\validator
  */
 class RealauthValidator extends \pms\Validation\Validator;
 {

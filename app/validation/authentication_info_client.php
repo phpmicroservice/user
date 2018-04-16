@@ -6,13 +6,13 @@
  * Time: 下午1:54
  */
 
-namespace logic\user\validation;
+namespace app\validation;
 
 
 /**
  * 申请客户认证的信息
  * Class authentication_info_client
- * @package logic\user\validation
+ * @package app\validation
  */
 class authentication_info_client extends \pms\CoreValidation
 {

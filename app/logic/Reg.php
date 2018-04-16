@@ -1,12 +1,9 @@
 <?php
 
-namespace logic\user\service;
+namespace app\logic;
 
-use core\Sundry\Trace;
-use logic\rbac\Role;
-use logic\user\model\user_info;
-use logic\user\model\user_tel;
-use tool\Str;
+use app\model\user_info;
+use app\model\user_tel;
 
 /**
  * Description of Reg
@@ -23,15 +20,14 @@ class Reg extends \app\Base
      */
     public function regAction($data)
     {
-        Trace::add('info', $data);
         # 进行验证
-        $validation = new \logic\user\validation\Reg();
+        $validation = new \app\validation\Reg();
         if (!$validation->validate($data)) {
             return $validation->getMessage();
         }
 
         # 验证完成
-        $userModel = new \logic\user\model\user();
+        $userModel = new \app\model\user();
         $security = new \Phalcon\Security();
 
         $data['username'] = $data['username'] ? $data['username'] : uniqid();
@@ -67,9 +63,6 @@ class Reg extends \app\Base
      */
     private function initReg($user_id, $data)
     {
-        # 增加普通用户角色
-
-        Role::add_user($user_id, 2);
         # 初始化 用户信息表
         $model = new user_info();
         $model->setData([
@@ -108,12 +101,12 @@ class Reg extends \app\Base
     public function add($data)
     {
         # 进行验证
-        $validation = new \logic\user\validation\add_user();
+        $validation = new \app\validation\add_user();
         if (!$validation->validate($data)) {
             return $validation->getMessage();
         }
         # 验证完成
-        $userModel = new \logic\user\model\user();
+        $userModel = new \app\model\user();
         $security = new \Phalcon\Security();
         //密码加密
         $data['password'] = $security->hash($data['password'], 2);

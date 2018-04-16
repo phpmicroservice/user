@@ -3,7 +3,7 @@
 namespace logic\user;
 
 use core\Sundry\Trace;
-use logic\user\model\user_realauth;
+use app\model\user_realauth;
 
 /**
  * 实名认证
@@ -109,7 +109,7 @@ class Realauth extends \app\Base
     public function realauthlist($where, $page)
     {
         $builder = $this->modelsManager->createBuilder()
-            ->from(\logic\user\model\user_realauth::class);
+            ->from(\app\model\user_realauth::class);
         if (!empty($where['user_id'])) {
             $builder->andWhere('user_id = :user_id:', [
                 'user_id' => $where['user_id']

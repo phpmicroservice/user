@@ -4,13 +4,13 @@ namespace logic\user;
 
 use core\Sundry\Trace;
 use core\Validator\whereValidator;
-use logic\user\model\user_config;
-use logic\user\model\user_friend;
-use logic\user\model\user_friend_apply;
-use logic\user\model\user_friend_config;
-use logic\user\validation\add_apply;
-use logic\user\validation\add_friend;
-use logic\user\validation\friend_set;
+use app\model\user_config;
+use app\model\user_friend;
+use app\model\user_friend_apply;
+use app\model\user_friend_config;
+use app\validation\add_apply;
+use app\validation\add_friend;
+use app\validation\friend_set;
 use tool\Arr;
 
 class Friend extends \app\Base

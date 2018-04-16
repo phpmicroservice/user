@@ -1,11 +1,11 @@
 <?php
 
-namespace logic\user\model;
+namespace app\model;
 
 /**
  * 实名认证
  * Class user_realauth
- * @package logic\user\model
+ * @package app\model
  */
 class user_realauth extends \pms\Mvc\Model
 {

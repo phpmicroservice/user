@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user\validator;
+namespace app\validator;
 
 /**
  * Description of regValidator

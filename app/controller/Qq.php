@@ -1,6 +1,6 @@
 <?php
 
-namespace apps\user\controllers;
+namespace app\controller;
 
 use app\Controller;
 use core\ReturnMsg;
@@ -10,7 +10,7 @@ use core\Sundry\Trace;
 /**
  * QQ互联的相关控制器
  * Class CollectController
- * @package apps\user\controllers
+ * @package app\controller
  */
 class Qq extends Controller
 {

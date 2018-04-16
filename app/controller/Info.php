@@ -1,6 +1,6 @@
 <?php
 
-namespace apps\user\controllers;
+namespace app\controller;
 
 use app\Controller;
 
@@ -10,7 +10,7 @@ use core\Sundry\Trace;
 /**
  * 用户信息控制器 Info
  * Class InfoController
- * @package apps\user\controllers
+ * @package app\controller
  */
 class Info extends Controller
 {

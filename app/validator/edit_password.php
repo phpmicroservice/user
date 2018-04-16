@@ -6,7 +6,7 @@
  * Time: 下午3:37
  */
 
-namespace logic\user\validator;
+namespace app\validator;
 
 
 class edit_password extends \pms\Validation\Validator
@@ -23,7 +23,7 @@ class edit_password extends \pms\Validation\Validator
         $password = $validation->getValue('old_password');
         $user_id = $validation->getValue('user_id');
         $Security = new \Phalcon\Security();
-        $passwordHash = \logic\user\model\user::findFirstById($user_id);
+        $passwordHash = \app\model\user::findFirstById($user_id);
         if (!$passwordHash or !$Security->checkHash($password, $passwordHash->password)) {
             $this->type = 'old_password';
             return $this->appendMessage($validation, $attribute);

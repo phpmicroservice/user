@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user\validation;
+namespace app\validation;
 
 /**
  * 收藏的数据验证
@@ -25,7 +25,7 @@ class Collect extends \pms\CoreValidation
                 "message" => "required"
             ],
             'Validator' => [
-                'name' => 'logic\user\validator\CollectValidator',
+                'name' => 'app\validator\CollectValidator',
                 "message" => "userCollect"
             ],
         ]
