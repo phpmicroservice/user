@@ -9,7 +9,7 @@
 namespace logic\user\validator;
 
 
-class edit_password extends \pms\Validation\Validator;
+class edit_password extends \pms\Validation\Validator
 {
 
     /**
