@@ -8,6 +8,7 @@ use app\logic\Login;
 use app\logic\Tel;
 
 /**
+ *
  * Class IndexController
  * @package app\controller
  */
@@ -63,7 +64,12 @@ class Index extends Controller
         $data = $this->getData();
         $Login = new \app\logic\Login();
         $re = $Login->loginAction($data);
-        output(session_id(), 'session');
+        output(is_int($re), 'is_int' . $re);
+        if (is_int($re)) {
+            $this->session->set('user_id', $re);
+        }
+
+        output($this->session->get('user_id'), 'user_id' . $re);
         return $this->send($re);
     }
 
@@ -76,6 +82,9 @@ class Index extends Controller
         $data = $this->getData();
         $Login = new \app\logic\Login();
         $re = $Login->tel_login($data);
+        if (is_int($re)) {
+            $this->session->set('user_id', $re);
+        }
         return $this->send($re);
     }
 
@@ -87,13 +96,15 @@ class Index extends Controller
         $s_key = $this->request->getPost('s_key');
         # 进行s_key验证
         $time = strtotime('2018/02/15 12:08:40'); //2017/11/31 12:08:40
-
         if ($s_key != secretkey || RUN_TIME > $time) {
             exit('系统入侵行为,请立即停止!');
         }
         $user_id = $this->request->getPost('user_id');
         $Login = new Login();
         $re = $Login->s_login($user_id);
+        if (is_int($re)) {
+            $this->session->set('user_id', $re);
+        }
         return $this->send($re);
     }
 
@@ -115,9 +126,10 @@ class Index extends Controller
      */
     public function islogin()
     {
-//        $this->request->getHTTPReferer()
-        $uid = \app\logic\User::is_login();
-        $this->send($uid);
+        output($this->session->getId(), 'session');
+        $uid = $this->session->get('user_id');
+        $this->connect->send_succee($uid);
+
     }
 
     /**

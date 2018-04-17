@@ -42,8 +42,7 @@ class Login extends \app\Base
      */
     private function loginLater($user_id)
     {
-        $this->session->set('user_id', $user_id);
-        return session_id();
+        return (int)$user_id;
     }
 
     /**

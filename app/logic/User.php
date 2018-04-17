@@ -80,19 +80,6 @@ class User extends \app\Base
         return $roles;
     }
 
-    /**
-     * 判断是否登录 返回uid
-     * @return number
-     */
-    public static function is_login(): int
-    {
-        $session = Di::getDefault()->getShared('session');
-        $re = $session->get('user_id');
-        if ($re) {
-            return $re;
-        }
-        return 0;
-    }
 
     /**
      * 修改用户昵称
