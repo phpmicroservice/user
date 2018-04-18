@@ -88,6 +88,22 @@ $di->setShared('gCache', function () use ($di) {
 });
 
 
+$di["router"] = function () {
+    $router = new \Phalcon\Mvc\Router();
+    $router->setDefaultNamespace('app\\controller');
+    $router->setDefaultController('index');
+    $router->setDefaultAction('index');
+    $router->add(
+        "/:controller/:action/:params", [
+            "controller" => 1,
+            "action" => 2,
+            'params' => 3
+        ]
+    );
+
+    return $router;
+};
+
 //注册过滤器,添加了几个自定义过滤方法
 $di->setShared('filter', function () {
     $filter = new \Phalcon\Filter();

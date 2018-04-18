@@ -21,11 +21,12 @@ class Controller extends \pms\Controller
      * 初始化
      * @param $connect
      */
-    protected function onInitialize($connect)
+    public function initialize()
     {
         $this->di->setShared('message', function () {
             return new Group();
         });
+        parent::initialize();
     }
 
 
@@ -35,6 +36,7 @@ class Controller extends \pms\Controller
      */
     public function getData($name = '')
     {
+        output(get_class($this->connect), 'connect');
         $d = $this->connect->getData();
         if ($name) {
             return isset($d[$name]) ?? null;
