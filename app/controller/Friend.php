@@ -26,7 +26,7 @@ class Friend extends \core\CoreController
             'user_id2' => ['post', 'user_id2', 'int', 0],
             'reason' => ['post', 'reason', 'string', 0],
         ]);
-        $service = new \logic\user\Friend();
+        $service = new \app\logic\Friend();
         $re = $service->add_apply($this->user_id, $data);
         return $this->send($re);
     }
@@ -40,7 +40,7 @@ class Friend extends \core\CoreController
         $user_id = $this->request->get('user_id', 'int', 0);
         $field = $this->request->get('field', 'string', 0);
         $value = $this->request->get('value', 'int', 0);
-        $service = new \logic\user\Friend();
+        $service = new \app\logic\Friend();
         $re = $service->friend_set($this->user_id, $user_id, $field, $value);
         return $this->send($re);
     }
@@ -52,7 +52,7 @@ class Friend extends \core\CoreController
     public function friend_set_info()
     {
         $user_id = $this->request->get('user_id', 'int', 0);
-        $service = new \logic\user\Friend();
+        $service = new \app\logic\Friend();
         $re = $service->friend_set_info($this->user_id, $user_id);
         return $this->send($re);
     }
@@ -63,7 +63,7 @@ class Friend extends \core\CoreController
     public function add_friend_type()
     {
         $user_id2 = $this->request->get('user_id2', 'int', 0);
-        $service = new \logic\user\Friend();
+        $service = new \app\logic\Friend();
         $re = $service->get_add_friend_type($this->user_id, $user_id2);
         return $this->send($re);
     }
@@ -74,7 +74,7 @@ class Friend extends \core\CoreController
     public function del_friend()
     {
         $user_id = $this->request->get('user_id', 'int', 0);
-        $service = new \logic\user\Friend();
+        $service = new \app\logic\Friend();
         $re = $service->del_friend($this->user_id, $user_id);
         return $this->send($re);
     }
@@ -87,7 +87,7 @@ class Friend extends \core\CoreController
     {
         $id = $this->request->get('id', 'int', 0);
         $from_user_id = $this->request->get('from_user_id', 'int', 0);
-        $service = new \logic\user\Friend();
+        $service = new \app\logic\Friend();
         $re = $service->apply_ok($this->user_id, $id, $from_user_id);
         return $this->send($re);
     }
@@ -101,7 +101,7 @@ class Friend extends \core\CoreController
         $data = $this->getData([
             'user_id2' => ['post', 'user_id2', 'int', 0]
         ]);
-        $service = new \logic\user\Friend();
+        $service = new \app\logic\Friend();
         $re = $service->add_friend($this->user_id, $data['user_id2']);
         return $this->send($re);
     }
@@ -113,7 +113,7 @@ class Friend extends \core\CoreController
     public function apply_no()
     {
         $id = $this->request->get('id', 'int', 0);
-        $service = new \logic\user\Friend();
+        $service = new \app\logic\Friend();
         $re = $service->apply_no($this->user_id, $id);
         return $this->send($re);
     }
@@ -126,7 +126,7 @@ class Friend extends \core\CoreController
     {
         $page = $this->request->get('p', 'int', 1);
         $status = $this->request->get('status', 'int', 0);
-        $service = new \logic\user\Friend();
+        $service = new \app\logic\Friend();
         $re = $service->apply_list([
             'user_id' => $this->user_id,
             'status' => $status
@@ -142,7 +142,7 @@ class Friend extends \core\CoreController
     {
         $page = $this->request->get('p', 'int', 1);
         $status = $this->request->get('status', 'int', 0);
-        $service = new \logic\user\Friend();
+        $service = new \app\logic\Friend();
         $re = $service->apply_list([
             'user_id2' => $this->user_id,
             'status' => $status
@@ -157,7 +157,7 @@ class Friend extends \core\CoreController
     public function listf()
     {
         $page = $this->request->get('p', 'int', 1);
-        $service = new \logic\user\Friend();
+        $service = new \app\logic\Friend();
         $re = $service->listf([
             'user_id' => $this->user_id
         ], $page);

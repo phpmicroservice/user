@@ -190,7 +190,7 @@ class Friend extends \app\Base
         return $paginator->getPaginate(function ($data) {
             $array = $data->items->toArray();
             $array = \tool\Arr::for_index($array, ['user_id', 'user_id2'], function ($id_list) {
-                return \logic\user\User::get_userlist_uidarr($id_list);
+                return \app\logic\User::get_userlist_uidarr($id_list);
             });
             $data->items = $array;
             return $data;
@@ -277,7 +277,7 @@ class Friend extends \app\Base
         return $paginator->getPaginate(function ($data) {
             $array = $data->items->toArray();
             $array = \tool\Arr::for_index($array, ['user_id', 'user_id2'], function ($id_list) {
-                return \logic\user\User::get_userlist_uidarr($id_list);
+                return \app\logic\User::get_userlist_uidarr($id_list);
             });
             $data->items = $array;
             return $data;

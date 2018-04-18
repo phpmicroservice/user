@@ -107,7 +107,7 @@ class Message extends CoreService
     {
         $array = $data->items->toArray();
         $array = \tool\Arr::for_index($array, ['from_uid', 'to_uid'], function ($id_list) {
-            return \logic\user\User::get_userlist_uidarr($id_list);
+            return \app\logic\User::get_userlist_uidarr($id_list);
         });
 
 

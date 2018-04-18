@@ -31,7 +31,7 @@ class Info extends Controller
             'personalized' => ['post', 'personalized', 'string', '签名'],
             'area' => ['post', 'area', 'int', 0],
         ]);
-        $service = new \logic\user\Info();
+        $service = new \app\logic\Info();
         $re = $service->edit($this->user_id, $data);
         return $this->send($re);
     }
@@ -42,7 +42,7 @@ class Info extends Controller
      */
     public function info()
     {
-        $service = new \logic\user\Info();
+        $service = new \app\logic\Info();
         $re = $service->info_user($this->user_id);
 
         return $this->send($re);
@@ -51,7 +51,7 @@ class Info extends Controller
     public function p_info()
     {
         $user_id = $this->request->get('user_id', 'int', 0);
-        $service = new \logic\user\Info();
+        $service = new \app\logic\Info();
         $re = $service->info_user($user_id);
         return $this->send($re);
     }

@@ -24,7 +24,7 @@ class Realauth extends Controller
             'img2' => ['post', 'img2', 'int', 0],
             'img3' => ['post', 'img3', 'int', 0],
         ]);
-        $service = new \logic\user\Realauth($this->user_id);
+        $service = new \app\logic\Realauth($this->user_id);
         $re = $service->submit($data);
         return $this->send($re);
     }
@@ -35,7 +35,7 @@ class Realauth extends Controller
      */
     public function info()
     {
-        $service = new \logic\user\Realauth($this->user_id);
+        $service = new \app\logic\Realauth($this->user_id);
         $re = $service->info();
         return $this->send($re);
     }
@@ -43,7 +43,7 @@ class Realauth extends Controller
     public function p_info()
     {
         $user_id = $this->request->get('user_id', 'int', 0);
-        $service = new \logic\user\Realauth($user_id);
+        $service = new \app\logic\Realauth($user_id);
         $re = $service->p_info($user_id);
         return $this->send($re);
     }

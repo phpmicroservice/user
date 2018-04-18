@@ -46,7 +46,7 @@ class Message extends \app\Base
             return '_empty-error';
         }
         $data = $model->toArray();
-        $info = new \logic\user\Info();
+        $info = new \app\logic\Info();
         $data['from_info'] = $info->p_info($data['from_uid']);
         $data['to_info'] = $info->p_info($data['to_uid']);
         return $data;

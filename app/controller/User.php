@@ -22,7 +22,7 @@ class User extends Controller
     public function edit_username()
     {
         $new_username = $this->request->get('username', 'string', '');
-        $User = new \logic\user\User();
+        $User = new \app\logic\User();
         $re = $User->edit_username($this->user_id, $new_username);
         return $this->send($re);
     }
@@ -39,7 +39,7 @@ class User extends Controller
             'new_password2' => ['post', 'new_password2', 'string', ''],
         ];
         $data = $this->getData($parameter);
-        $User = new \logic\user\Password();
+        $User = new \app\logic\Password();
         $re = $User->edit_password($this->user_id, $data);
         return $this->send($re);
     }

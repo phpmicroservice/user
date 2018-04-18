@@ -70,7 +70,7 @@ class collect extends \app\Base
         $data = $paginator->getPaginate(function ($data) {
             $array = $data->items->toArray();
             $data->items = \tool\Arr::for_index($array, 'user_id', function ($array_list) {
-                return \logic\user\User::get_userlist_uidarr($array_list);
+                return \app\logic\User::get_userlist_uidarr($array_list);
             });
             return $data;
         });

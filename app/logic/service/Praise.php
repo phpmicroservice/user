@@ -105,7 +105,7 @@ class Praise extends \app\Base
 
             $data = $datastd->items->toArray();
             $data = \tool\Arr::for_index($data, ['user_id'], function ($user_id_list) {
-                return \logic\user\User::get_userlist_uidarr($user_id_list);
+                return \app\logic\User::get_userlist_uidarr($user_id_list);
             }, true, 'user_info');
             $datastd->items = $data;
             return $datastd;

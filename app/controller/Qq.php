@@ -31,7 +31,7 @@ class Qq extends Controller
         $re = $qc->get_user_info();
         if ($re['ret'] == 0) {
             //
-            $userService = new \logic\user\Qq();
+            $userService = new \app\logic\Qq();
             $re = $userService->login($openid);
         } else {
             return $this->restful_error($re['msg']);
@@ -51,7 +51,7 @@ class Qq extends Controller
         $re = $qc->get_user_info();
 
         if ($re['ret'] == 0) {
-            $userService = new \logic\user\Qq();
+            $userService = new \app\logic\Qq();
             $re = $userService->relevance($openid, $this->user_id, $re);
 
             return $this->send($re);
@@ -66,7 +66,7 @@ class Qq extends Controller
      */
     public function quxiao()
     {
-        $userService = new \logic\user\Qq();
+        $userService = new \app\logic\Qq();
         $re = $userService->quxiao($this->user_id);
 
         return $this->send($re);
@@ -74,7 +74,7 @@ class Qq extends Controller
 
     public function info()
     {
-        $userService = new \logic\user\Qq();
+        $userService = new \app\logic\Qq();
         $re = $userService->info($this->user_id);
 
         return $this->send($re);
@@ -102,7 +102,7 @@ class Qq extends Controller
         $qc = new \QC();
         $access_token = $qc->qq_callback();
         $openid = $qc->get_openid();
-        $userService = new \logic\user\Qq();
+        $userService = new \app\logic\Qq();
         $re = $userService->login($openid);
         if (is_string($re)) {
             // 失败

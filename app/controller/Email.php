@@ -18,7 +18,7 @@ class Email extends Controller
     public function send_security()
     {
         $email = $this->request->get('email', 'string', '');
-        $service = new \logic\user\Email($this->user_id);
+        $service = new \app\logic\Email($this->user_id);
         $re = $service->send_security($email);
         return $this->send($re);
     }
@@ -29,7 +29,7 @@ class Email extends Controller
      */
     public function send_relieve()
     {
-        $service = new \logic\user\Email($this->user_id);
+        $service = new \app\logic\Email($this->user_id);
         $re = $service->send_relieve();
         return $this->send($re);
     }
@@ -41,7 +41,7 @@ class Email extends Controller
     public function security_relieve()
     {
         $security = $this->request->get('security', 'string', uniqid());
-        $service = new \logic\user\Email($this->user_id);
+        $service = new \app\logic\Email($this->user_id);
         $re = $service->security_relieve($security);
         return $this->send($re);
     }
@@ -52,7 +52,7 @@ class Email extends Controller
     public function security_check()
     {
         $security = $this->request->get('security', 'string', uniqid());
-        $service = new \logic\user\Email($this->user_id);
+        $service = new \app\logic\Email($this->user_id);
         $re = $service->security_check($security);
         return $this->send($re);
     }
@@ -63,7 +63,7 @@ class Email extends Controller
      */
     public function info()
     {
-        $service = new \logic\user\Email($this->user_id);
+        $service = new \app\logic\Email($this->user_id);
         $re = $service->info();
         return $this->send($re);
     }

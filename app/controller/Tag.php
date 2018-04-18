@@ -29,7 +29,7 @@ class Tag extends Controller
         ];
         $data = $this->getData($pa);
         $data['user_id'] = $this->user_id;
-        $Tag = new \logic\user\Tag();
+        $Tag = new \app\logic\Tag();
         $re = $Tag->relation($data);
         return $this->send($re);
     }

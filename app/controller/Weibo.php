@@ -8,7 +8,7 @@ use app\Controller;
  * 消息 message
  * Class MessageController
  * @package app\controller
- * @property \logic\user\Message $MessageService
+ * @property \app\logic\Message $MessageService
  */
 class Weibo extends Controller
 {
@@ -26,14 +26,14 @@ class Weibo extends Controller
         $data = $this->getData([
             'weibo' => ['post', 'weibo', 'string', 0],
         ]);
-        $service = new \logic\user\Weibo();
+        $service = new \app\logic\Weibo();
         $re = $service->edit($this->user_id, $data);
         return $this->send($re);
     }
 
     public function info()
     {
-        $service = new \logic\user\Weibo();
+        $service = new \app\logic\Weibo();
         $re = $service->info_user($this->user_id);
         return $this->send($re);
     }

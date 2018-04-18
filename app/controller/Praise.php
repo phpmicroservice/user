@@ -19,7 +19,7 @@ class Praise extends Controller
     {
         $re_id = $this->request->get('re_id', 'int', 0);
         $type = $this->request->get('type', 'string', 'article');
-        $Praise = new \logic\user\praise();
+        $Praise = new \app\logic\praise();
         $data = [
             'user_id' => $this->user_id,
             'to_type' => $type,
@@ -37,7 +37,7 @@ class Praise extends Controller
     {
         $re_id = $this->request->get('re_id', 'int', 0);
         $type = $this->request->get('type', 'string', 'article');
-        $Praise = new \logic\user\praise();
+        $Praise = new \app\logic\praise();
         $data = [
             'user_id' => $this->user_id,
             'to_type' => $type,
@@ -56,7 +56,7 @@ class Praise extends Controller
         $type = $this->request->get('type', 'string', 'article');
         $praise_type = $this->request->get('p_t', 'int', 1);
         $page = $this->request->get('p', 'int', 0);
-        $Praise = new \logic\user\praise();
+        $Praise = new \app\logic\praise();
         $data = [
             'to_type' => $type,
             'to_numerical' => $re_id,

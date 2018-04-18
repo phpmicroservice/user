@@ -28,7 +28,7 @@ class Tel extends Controller
             'new_tel' => ['post', 'new_tel', 'string', ''],
             'new_captcha' => ['post', 'new_captcha', 'string', ''],
         ]);
-        $telService = new \logic\user\Tel();
+        $telService = new \app\logic\Tel();
         $re = $telService->edit_tel($this->user_id, $data);
         return $this->send($re);
     }
@@ -39,7 +39,7 @@ class Tel extends Controller
      */
     public function info()
     {
-        $telService = new \logic\user\Tel();
+        $telService = new \app\logic\Tel();
         $re = $telService->info4user($this->user_id);
         return $this->send($re);
     }
@@ -51,7 +51,7 @@ class Tel extends Controller
     {
         $tel = $this->request->get('tel', 'string', '');
         $captcha = $this->request->get('captcha', 'string', '');
-        $telService = new \logic\user\Tel();
+        $telService = new \app\logic\Tel();
         $re = $telService->tel_captcha($this->user_id, $tel, $captcha);
         return $this->send($re);
     }

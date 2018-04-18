@@ -143,7 +143,7 @@ class Index extends Controller
             'new_password2' => ['post', 'new_password2', 'string', '']
         ];
         $data = $this->getData($parameter);
-        $User = new \logic\user\Password();
+        $User = new \app\logic\Password();
         $re = $User->retrieve_password($data);
         return $this->send($re);
     }
