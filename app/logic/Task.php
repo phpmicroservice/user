@@ -11,7 +11,7 @@ class Task
 
     public function demo()
     {
-        Trace::add('info', func_get_args());
+
     }
 
     public function timing($data)

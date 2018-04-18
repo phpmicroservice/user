@@ -2,7 +2,6 @@
 
 namespace app\validator;
 
-use core\Sundry\Trace;
 
 /**
  * passwordValidator
@@ -28,7 +27,7 @@ class passwordValidator extends \Phalcon\Validation\Validator
         $Security = new \Phalcon\Security();
         if (empty($username)) {
             # 不存在用户名
-            Trace::add('info30', $user_id);
+
             $passwordHashModel = \app\model\user::findFirstById($user_id);
         } else {
             $passwordHashModel = \app\model\user::findFirstByUsername($username);

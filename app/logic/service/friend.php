@@ -9,9 +9,8 @@
 namespace logic\user\service;
 
 
-use core\Sundry\Trace;
 use app\model\user_friend;
-use tool\date;
+use funch\date;
 
 class friend extends \app\Base
 {
@@ -104,7 +103,7 @@ class friend extends \app\Base
             # 已经是好友了
             if (!$infomodel->delete()) {
                 # 删除好友失败!
-                Trace::add('error', $infomodel->getMessage());
+
                 return $infomodel->getMessage();
             }
         }

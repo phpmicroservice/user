@@ -47,7 +47,7 @@ class Index extends Controller
     public function find_user()
     {
         $username = $this->getData('username');
-        $service = new \logic\user\User();
+        $service = new \app\logic\User();
         $re = $service->find_user($username);
         return $this->send($re);
     }
@@ -122,7 +122,7 @@ class Index extends Controller
      */
     public function islogin()
     {
-        return 1;
+
         output($this->session->getId(), 'session');
         $uid = $this->session->get('user_id');
         $this->connect->send_succee($uid);

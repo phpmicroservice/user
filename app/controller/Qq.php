@@ -3,8 +3,6 @@
 namespace app\controller;
 
 use app\Controller;
-use core\ReturnMsg;
-use core\Sundry\Trace;
 
 
 /**
@@ -51,11 +49,11 @@ class Qq extends Controller
 
         $qc = new \QC($token, $openid);
         $re = $qc->get_user_info();
-        Trace::add('info', $re);
+
         if ($re['ret'] == 0) {
             $userService = new \logic\user\Qq();
             $re = $userService->relevance($openid, $this->user_id, $re);
-            Trace::add('info', $re);
+
             return $this->send($re);
         } else {
             return $this->restful_error($re['msg']);
@@ -70,7 +68,7 @@ class Qq extends Controller
     {
         $userService = new \logic\user\Qq();
         $re = $userService->quxiao($this->user_id);
-        Trace::add('info', $re);
+
         return $this->send($re);
     }
 
@@ -78,7 +76,7 @@ class Qq extends Controller
     {
         $userService = new \logic\user\Qq();
         $re = $userService->info($this->user_id);
-        Trace::add('info', $re);
+
         return $this->send($re);
 
     }

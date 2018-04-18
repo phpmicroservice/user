@@ -30,7 +30,6 @@ class role extends \Phalcon\Di\Injectable
 
         $re = \logic\user\service\Role::user_del_role(4, $data['user_id']);
         if (is_string($re)) {
-            Trace::add('error_info', [$re, $data]);
 
             return false;
         }
@@ -46,7 +45,7 @@ class role extends \Phalcon\Di\Injectable
         # 通过之后给予服务商用户组
         $re = \logic\user\service\Role::add_user(4, $data['user_id']);
         if (is_string($re)) {
-            \core\Sundry\Trace::add('error-info', $re);
+
             return false;
         }
         return true;
@@ -58,7 +57,7 @@ class role extends \Phalcon\Di\Injectable
         # 不通过删除用户组
         $re = \logic\user\service\Role::user_del_role(3, $data['user_id']);
         if (is_string($re)) {
-            \core\Sundry\Trace::add('error-info', $re);
+
             return false;
         }
         return true;

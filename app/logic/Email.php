@@ -2,7 +2,6 @@
 
 namespace app\logic;
 
-use core\Sundry\Trace;
 use app\model\user_email;
 
 /**
@@ -44,7 +43,7 @@ class Email extends \app\Base
         if ($model->save() === false) {
             return $model->getMessage();
         }
-        Trace::add('info', $code);
+
         # 发送邮箱验证码
         \core\message\Email\facade::send($email, '邮箱解绑验证码', "您的邮箱验证码为:$code, 该验证码有效期限为3天,请在3天内完成验证.");
         return true;
@@ -106,8 +105,7 @@ class Email extends \app\Base
             return '_empty-error';
         }
 
-        Trace::add('info', [$security, $model->code]);
-        Trace::add('info', [$model->create_time + (3600 * 72), time()]);
+
         if ($model->code === $security && ($model->create_time + (3600 * 72)) > time()) {
             # 验证通过
             $model->status = 1;
@@ -117,7 +115,7 @@ class Email extends \app\Base
             }
             return true;
         }
-        Trace::add('info', 'error');
+
         return '_error-timeorcode';
     }
 
@@ -135,8 +133,7 @@ class Email extends \app\Base
             return '_empty-error';
         }
 
-        Trace::add('info', [$security, $model->code]);
-        Trace::add('info', [$model->create_time + (3600 * 72), time()]);
+
         if ($model->code === $security && ($model->create_time + (3600 * 72)) > time()) {
             # 验证通过
             $model->status = 0;
@@ -146,7 +143,7 @@ class Email extends \app\Base
             }
             return true;
         }
-        Trace::add('info', 'error');
+
         return '_error-timeorcode';
 
     }

@@ -4,8 +4,6 @@ namespace app\controller;
 
 use app\Controller;
 
-use core\Sundry\Trace;
-
 
 /**
  * 用户信息控制器 Info
@@ -46,7 +44,7 @@ class Info extends Controller
     {
         $service = new \logic\user\Info();
         $re = $service->info_user($this->user_id);
-        Trace::add('info', $re);
+
         return $this->send($re);
     }
 

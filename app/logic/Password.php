@@ -2,7 +2,6 @@
 
 namespace app\logic;
 
-use core\Sundry\Trace;
 use app\model\user_tel;
 
 /**
@@ -26,7 +25,7 @@ class Password extends \app\Base
             'name' => validator\retrieve_password::class,
         ]);
         if (!$validation->validate($data)) {
-            Trace::add('info', 27);
+
             return $validation->getMessage();
         }
 
@@ -44,7 +43,7 @@ class Password extends \app\Base
         $user_id = $telInfo->user_id;
         $UserModel = \app\model\user::findFirstById($user_id);
         if (!$UserModel) {
-            Trace::add('info', '找不到用户!');
+
             return '_empty-info';
         }
         $Security = new \Phalcon\Security();
@@ -52,7 +51,7 @@ class Password extends \app\Base
         $new_password = $Security->hash($data['new_password'], 2);
         $UserModel->password = $new_password;
         if ($UserModel->update() === false) {
-            Trace::add('info', 27);
+
             return $UserModel->getMessage();
         }
         return true;

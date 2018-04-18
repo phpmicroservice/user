@@ -4,11 +4,11 @@ namespace app\logic;
 
 use app\Base;
 
-use core\Sundry\Trace;
+
 use app\model\user_info;
 use app\validation\edit_info;
 use PayPal\Api\FileAttachment;
-use tool\Arr;
+use funch\Arr;
 
 /**
  * 信息
@@ -43,7 +43,7 @@ class Info extends Base
     public function edit($user_id, $data)
     {
         $data['user_id'] = $user_id;
-        Trace::add('info', $data);
+
         $validation = new edit_info();
         if (!$validation->validate($data)) {
             return $validation->getMessage();
@@ -59,7 +59,6 @@ class Info extends Base
         $data['lock'] = 0;
         $data['headimg'] = $attachmentArray->one($data['user_id'], 'headimg', $mode->headimg, $data['headimg']);
 
-        Trace::add('info', [$data, $mode->toArray()]);
         #进行增加或者编辑
         $mode->setData($data);
         if ($mode->save($data) === false) {

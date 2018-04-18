@@ -2,7 +2,7 @@
 
 namespace app\logic;
 
-use core\Sundry\Trace;
+
 use core\Validator\whereValidator;
 use app\model\user_config;
 use app\model\user_friend;
@@ -294,7 +294,7 @@ class Friend extends \app\Base
 
         $data['user_id'] = $user_id;
         $data['status'] = 0;
-        Trace::add('info', $data);
+
 
         $validation = new add_apply();
         if (!$validation->validate($data)) {
@@ -325,7 +325,7 @@ class Friend extends \app\Base
             'id' => $id,
             'status' => 0
         ];
-        Trace::add('info', $where);
+
         $validation = new \pms\Validation();
         # 是否存在未审核的数据
         $validation->add_Validator('user_id', [
@@ -365,7 +365,7 @@ class Friend extends \app\Base
             'id' => $id,
             'status' => 0
         ];
-        Trace::add('info', func_get_args());
+
         $validation = new \pms\Validation();
         # 是否存在未审核的数据
         $validation->add_Validator('user_id', [

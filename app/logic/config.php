@@ -28,7 +28,7 @@ class config extends \app\Base
         ];
         $validation = new set_config();
         if (!$validation->validate($data)) {
-            Trace::add('info', '33!');
+
             return $validation->getMessage();
         }
         # 验证完成
@@ -47,7 +47,7 @@ class config extends \app\Base
         }
         $infoM->setData($data);
         if (!$infoM->save()) {
-            Trace::add('info', 'chucuo!');
+
             return $infoM->getMessage();
         }
         return true;

@@ -1,12 +1,11 @@
 <?php
 
-namespace logic\user\service;
+namespace app\logic\service;
 
-use core\CoreService;
-use core\Sundry\Trace;
+use app\Base;
 use logic\user\Info;
 
-class User extends CoreService
+class User extends Base
 {
     /**
      * 用户信息
@@ -55,14 +54,14 @@ class User extends CoreService
      */
     public function user_list($where, $page, $row = 10)
     {
-        Trace::add('info', func_get_args());
+
         $modelsManager = $this->modelsManager;
         $builder = $modelsManager->createBuilder()
             ->from(\app\model\user::class)
             ->columns('id,username,email,forbid,init,edit_username,create_time')->orderBy("id");
 
         $builder = $this->call_where($builder, $where);
-        $paginator = new \core\Paginator\Adapter\QueryBuilder(
+        $paginator = new \pms\Paginator\Adapter\QueryBuilder(
             [
                 "builder" => $builder,
                 "limit" => $row,

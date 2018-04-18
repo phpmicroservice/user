@@ -22,7 +22,7 @@ class User extends \app\Base
     public static function get_userlist_uidarr($uidarr)
     {
         $list = \app\model\user::get_for_list($uidarr);
-        $list2 = \tool\Arr::array_change_index($list->toArray(), 'id');
+        $list2 = \funch\Arr::array_change_index($list->toArray(), 'id');
         return $list2;
     }
 

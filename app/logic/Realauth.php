@@ -151,7 +151,7 @@ class Realauth extends \app\Base
         } else {
             $mode = new  user_realauth();
         }
-        Trace::add('info', $mode->toArray());
+
         # 处理附件数据
         $this->transactionManager->get();
         $attachmentArray = new \logic\Attachment\attachmentArray();
@@ -159,7 +159,7 @@ class Realauth extends \app\Base
         $data['img1'] = $attachmentArray->one($data['user_id'], 'realauth', $mode->img1, $data['img1']);
         $data['img2'] = $attachmentArray->one($data['user_id'], 'realauth', $mode->img2, $data['img2']);
         $data['img3'] = $attachmentArray->one($data['user_id'], 'realauth', $mode->img3, $data['img3']);
-        Trace::add('info', $data);
+
         $mode->setData($data);
         if ($mode->save() === false) {
             $this->transactionManager->rollback();
