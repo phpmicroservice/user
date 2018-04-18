@@ -17,7 +17,7 @@ class Lv extends Controller
      */
     public function p_info()
     {
-        $user_id = $this->request->get('user_id', 'int', 0);
+        $user_id = $this->getData('user_id');
         $service = new \app\logic\Lv();
         $re = $service->info($user_id);
         return $this->send($re);

@@ -3,6 +3,9 @@
 namespace app\logic;
 
 use app\model\user_lv;
+use app\model\user_lv_config;
+use app\validator\user_exist;
+use pms\Validation;
 
 /**
  * 等级服务层
@@ -36,12 +39,40 @@ class Lv extends \app\Base
      * 等级信息
      * @param $user_id
      */
-    public function info($user_id)
+    public function info(int $user_id)
     {
+        output($user_id, 'user_id44');
+        # 验证用户是否存在
+        $va = new Validation();
+        $va->add_Validator('user_id', [
+            'name' => user_exist::class,
+            'message' => 'user_exist'
+        ]);
+        if (!$va->validate(['user_id' => $user_id])) {
+            return $va->getMessages();
+        }
         $modelList = \app\model\user_lv::findByuser_id($user_id);
         $data = $modelList->toArray();
+        return $this->list2arr(array_column($data, null, 'identifying'));
+    }
 
-        return array_column($data, null, 'identifying');
+    /**
+     * 初始化等级信息
+     * @param $user_id
+     */
+    private function list2arr($list)
+    {
+        # 读取等级类型
+        $lv_config = $this->gCache->getc('lv_config_array', function () {
+            $list = user_lv_config::find();
+            output($list->toArray(), 'llvconfig');
+            return array_column($list->toArray(), null, 'identifying');
+        }, 600);
+        $arr = [];
+        foreach ($lv_config as $key => $value) {
+            $arr[$key] = $list[$key] ?? 1;
+        }
+        return $arr;
     }
 
     /**

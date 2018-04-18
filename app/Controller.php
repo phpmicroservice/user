@@ -36,16 +36,19 @@ class Controller extends \pms\Controller
      */
     public function getData($name = '')
     {
-        output(get_class($this->connect), 'connect');
         $d = $this->connect->getData();
         if ($name) {
-            return isset($d[$name]) ?? null;
+            return $d[$name] ?? null;
         }
         return $d;
 
     }
 
 
+    /**
+     * 发送消息
+     * @param $re
+     */
     public function send($re)
     {
         if ($re instanceof \pms\Validation\Message\Group) {
