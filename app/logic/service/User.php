@@ -68,7 +68,9 @@ class User extends Base
                 "page" => $page,
             ]
         );
-        return $paginator->getPaginate();
+        $list = $paginator->getPaginate();
+        $list->items = $list->items->toArray();
+        return $list;
     }
 
     /**
