@@ -14,7 +14,7 @@ namespace app\validation;
  * Class authentication_info_client
  * @package app\validation
  */
-class authentication_info_client extends \pms\CoreValidation
+class authentication_info_client extends \pms\Validation
 {
 
     protected $lang = 'admin/model/user.php';

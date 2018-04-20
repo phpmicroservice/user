@@ -5,7 +5,7 @@ namespace app\validation;
 
 use app\model\user;
 
-class edit_username extends \pms\CoreValidation
+class edit_username extends \pms\Validation
 {
     protected function initialize()
     {

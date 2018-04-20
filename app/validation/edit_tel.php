@@ -11,7 +11,7 @@ use app\validator\user_exist;
  * Class edit_tel
  * @package app\validation
  */
-class edit_tel extends \pms\CoreValidation
+class edit_tel extends \pms\Validation
 {
     /**
      * 初始化

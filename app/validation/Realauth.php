@@ -6,7 +6,7 @@ use logic\Attachment\Validator\picValidator;
 use app\validator\Realauth_submit;
 use app\validator\user_exist;
 
-class Realauth extends \pms\CoreValidation
+class Realauth extends \pms\Validation
 {
 
     protected function initialize()

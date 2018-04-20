@@ -11,7 +11,7 @@ namespace app\validation;
 
 use app\validator\friend_exits;
 
-class friend_set extends \pms\CoreValidation
+class friend_set extends \pms\Validation
 {
 
     protected function initialize()

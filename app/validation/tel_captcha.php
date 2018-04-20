@@ -9,7 +9,7 @@ use app\validator\user_exist;
  * Class tel_captcha
  * @package app\validation
  */
-class tel_captcha extends \pms\CoreValidation
+class tel_captcha extends \pms\Validation
 {
 
     /**

@@ -5,7 +5,7 @@ namespace app\validation;
 
 use app\validator\user_exist;
 
-class set_config extends \pms\CoreValidation
+class set_config extends \pms\Validation
 {
 
     protected function initialize()

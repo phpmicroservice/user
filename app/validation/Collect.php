@@ -6,7 +6,7 @@ namespace app\validation;
  * 收藏的数据验证
  * @author Dongasai
  */
-class Collect extends \pms\CoreValidation
+class Collect extends \pms\Validation
 {
 
 //定义验证规则

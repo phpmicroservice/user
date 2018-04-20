@@ -10,7 +10,7 @@ use app\validator\user_exist;
  * Class relevance_qq
  * @package app\validation
  */
-class relevance_qq extends \pms\CoreValidation
+class relevance_qq extends \pms\Validation
 {
     protected function initialize()
     {

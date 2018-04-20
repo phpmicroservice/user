@@ -4,7 +4,7 @@
 namespace app\validation;
 
 
-class add_authentication_facilitator_1 extends \pms\CoreValidation
+class add_authentication_facilitator_1 extends \pms\Validation
 {
 
     //定义验证规则

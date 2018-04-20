@@ -11,20 +11,28 @@ use app\Controller;
  */
 class Email extends Controller
 {
+
+    public function initialize()
+    {
+        return parent::initialize();
+
+    }
+
     /**
      * 发送激活码
      * @return \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface
      */
     public function send_security()
     {
-        $email = $this->request->get('email', 'string', '');
+
+        $email = $this->getData('email');
         $service = new \app\logic\Email($this->user_id);
         $re = $service->send_security($email);
         return $this->send($re);
     }
 
     /**
-     * 发送激活码
+     * 发送解绑验证码
      * @return \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface
      */
     public function send_relieve()
@@ -40,7 +48,7 @@ class Email extends Controller
      */
     public function security_relieve()
     {
-        $security = $this->request->get('security', 'string', uniqid());
+        $security = $this->getData('security');
         $service = new \app\logic\Email($this->user_id);
         $re = $service->security_relieve($security);
         return $this->send($re);
@@ -51,9 +59,10 @@ class Email extends Controller
      */
     public function security_check()
     {
-        $security = $this->request->get('security', 'string', uniqid());
+        $security = $this->getData('security');
         $service = new \app\logic\Email($this->user_id);
         $re = $service->security_check($security);
+        output($re, 're');
         return $this->send($re);
     }
 

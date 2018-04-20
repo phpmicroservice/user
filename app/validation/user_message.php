@@ -11,7 +11,7 @@ namespace app\validation;
 
 use app\validator\user_exist;
 
-class user_message extends \pms\CoreValidation
+class user_message extends \pms\Validation
 {
     protected function initialize()
     {

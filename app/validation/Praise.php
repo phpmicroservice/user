@@ -13,7 +13,7 @@ namespace app\validation;
  *
  * @author Dongasai
  */
-class Praise extends \pms\CoreValidation
+class Praise extends \pms\Validation
 {
 
 //定义验证规则

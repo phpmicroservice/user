@@ -11,7 +11,7 @@ use app\validator\user_exist;
  * Class edit_info
  * @package app\validation
  */
-class edit_info extends \pms\CoreValidation
+class edit_info extends \pms\Validation
 {
     protected function initialize()
     {

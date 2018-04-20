@@ -99,12 +99,12 @@ $di->setShared('sessionCache', function () use ($di) {
     );
     output($di['config']->cache, 'gCache');
     $op = [
-        "host" => getenv('GCACHE_HOST'),
-        "port" => getenv('GCACHE_PORT'),
-        "auth" => getenv('GCACHE_AUTH'),
-        "persistent" => getenv('GCACHE_PERSISTENT'),
-        'prefix' => getenv('GCACHE_PREFIX'),
-        "index" => getenv('GCACHE_INDEX')
+        "host" => getenv('SESSION_CACHE_HOST'),
+        "port" => getenv('SESSION_CACHE_PORT'),
+        "auth" => getenv('SESSION_CACHE_AUTH'),
+        "persistent" => getenv('SESSION_CACHE_PERSISTENT'),
+        'prefix' => getenv('SESSION_CACHE_PREFIX'),
+        "index" => getenv('SESSION_CACHE_INDEX')
     ];
     if (empty($op['auth'])) {
         unset($op['auth']);

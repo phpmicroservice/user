@@ -6,7 +6,7 @@ namespace app\validation;
 use app\model\user_config;
 use app\model\user_friend;
 
-class add_friend extends \pms\CoreValidation
+class add_friend extends \pms\Validation
 {
 
     protected function initialize()

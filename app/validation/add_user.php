@@ -13,7 +13,7 @@ namespace app\validation;
  * Class add_user
  * @package app\validation
  */
-class add_user extends \pms\CoreValidation
+class add_user extends \pms\Validation
 {
 
 //定义验证规则

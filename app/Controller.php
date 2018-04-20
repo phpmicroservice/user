@@ -16,6 +16,7 @@ use pms\Validation\Message\Group;
 class Controller extends \pms\Controller
 {
     protected $session_id;
+    public $user_id;
 
     /**
      * 初始化
@@ -23,6 +24,7 @@ class Controller extends \pms\Controller
      */
     public function initialize()
     {
+        $this->user_id = $this->session->user_id;
         $this->di->setShared('message', function () {
             return new Group();
         });
@@ -41,7 +43,6 @@ class Controller extends \pms\Controller
             return $d[$name] ?? null;
         }
         return $d;
-
     }
 
 
