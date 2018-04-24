@@ -21,5 +21,6 @@ return [
         '/start/',
         '/tool/',
         '/config/',
+        '/vendor/phpmicroservice/pms-frame/src/',
     ]
 ];
