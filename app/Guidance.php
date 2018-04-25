@@ -48,6 +48,9 @@ class Guidance extends \Phalcon\Di\Injectable
         # 绑定一个准备判断和准备成功
         $this->eventsManager->attach('Server:readyJudge', $this);
         $this->eventsManager->attach('Server:readySucceed', $this);
+        $this->eventsManager->attach('dispatch:beforeNotFoundAction', function ($event, $dispatcher) {
+
+        });
     }
 
     /**

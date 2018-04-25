@@ -1,15 +1,9 @@
 <?php
 
-/**
- * Services are globally registered in this file
- * 服务的全局注册都这里,依赖注入
- */
-
 use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\Mvc\Model\Manager as ModelsManager;
 use Phalcon\Events\Manager;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
-
 
 //注册自动加载
 $loader = new \Phalcon\Loader();
@@ -100,10 +94,10 @@ $di->setShared('sessionCache', function () use ($di) {
     output($di['config']->cache, 'gCache');
     $op = [
         "host" => getenv('SESSION_CACHE_HOST'),
-        "port" => getenv('SESSION_CACHE_PORT'),
-        "auth" => getenv('SESSION_CACHE_AUTH'),
-        "persistent" => getenv('SESSION_CACHE_PERSISTENT'),
-        'prefix' => getenv('SESSION_CACHE_PREFIX'),
+        "port" => get_env('SESSION_CACHE_PORT', 6379),
+        "auth" => get_env('SESSION_CACHE_AUTH', ''),
+        "persistent" => get_env('SESSION_CACHE_PERSISTENT', 1),
+        'prefix' => get_env('SESSION_CACHE_PREFIX', 'session_'),
         "index" => getenv('SESSION_CACHE_INDEX')
     ];
     if (empty($op['auth'])) {
@@ -143,7 +137,6 @@ $di->setShared('eventsManager', function () {
     return $eventsManager;
 });
 
-
 //注册过滤器,添加了几个自定义过滤方法
 $di->setShared('filter', function () {
     $filter = new \Phalcon\Filter();
@@ -155,6 +148,13 @@ $di->setShared('filter', function () {
 $di->set(
     "modelsManager", function () {
     return new \Phalcon\Mvc\Model\Manager();
+});
+
+$di->set(
+    "clientSync", function () {
+    $client = new ClientSync(get_env('PROXY_HOST'), get_env('PROXY_PROT'), 10);
+    return $client;
+
 });
 
 

@@ -151,16 +151,11 @@ class Index extends Controller
     /**
      * 退出登录
      */
-    public function exit_login()
+    public function exitlogin()
     {
         $this->session->set('user_id', 0);
-        $session_id = $this->session->getId();
-        $cachekey = \tool\Arr::array_md5([
-            $session_id, 'userid'
-        ]);
-        //写
-        $this->RCache->delete($cachekey);
-        return $this->restful(ReturnMsg::create());
+        $this->session->reserve();
+        $this->connect->send_succee([], "退出成功!");
     }
 
 }

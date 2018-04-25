@@ -24,7 +24,6 @@ class Email extends Controller
      */
     public function send_security()
     {
-
         $email = $this->getData('email');
         $service = new \app\logic\Email($this->user_id);
         $re = $service->send_security($email);

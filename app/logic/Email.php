@@ -117,6 +117,7 @@ class Email extends \app\Base
         $re = $client->recv();
         if ($re['e']) {
             # 出错
+            output($re, 'error');
             $this->message->appendMessage(new \Phalcon\Validation\Message('邮件发送失败', 'email', 'type'));
             return $this->message;
         } else {

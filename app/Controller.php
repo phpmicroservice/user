@@ -11,6 +11,7 @@ use pms\Validation\Message\Group;
  * @property \Phalcon\Cache\BackendInterface $gCache
  * @property \Phalcon\Config $dConfig
  * @property \Phalcon\Validation\Message\Group $message
+ * @property \pms\bear\Client $clientSync
  * @package app\controller
  */
 class Controller extends \pms\Controller
