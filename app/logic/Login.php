@@ -76,7 +76,7 @@ class Login extends \app\Base
         $validation = new \app\validation\Login();
         //进行验证
         if (!$validation->validate($data)) {
-            return ReturnMsg::create(406, $validation->getMessage());
+            return $validation->getMessages();
         }
         if ($data['user_id']) {
             return $this->loginLater($data['user_id']);

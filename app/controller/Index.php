@@ -60,11 +60,10 @@ class Index extends Controller
         $data = $this->getData();
         $Login = new \app\logic\Login();
         $re = $Login->loginAction($data);
-        output(get_class($this->session), 'is_int' . $re);
         if (is_int($re)) {
             $this->session->set('user_id', $re);
         }
-        output($this->session->get('user_id'), 'user_id' . $re);
+        output($this->session->get('user_id'), 'user_id');
         return $this->send($re);
     }
 
