@@ -6,6 +6,7 @@ use app\Controller;
 use app\logic\Info;
 use app\logic\Login;
 use app\logic\Tel;
+use funch\Str;
 
 /**
  *
@@ -14,7 +15,10 @@ use app\logic\Tel;
  */
 class Index extends Controller
 {
-
+    public function getsid()
+    {
+        $this->connect->send_succee(md5(md5(time()) . mt_rand(1, 999999)));
+    }
     /**
      * 用户公共信息
      */
