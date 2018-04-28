@@ -151,8 +151,8 @@ $di->set(
 });
 
 $di->set(
-    "clientSync", function () {
-    $client = new ClientSync(get_env('PROXY_HOST'), get_env('PROXY_PROT'), 10);
+    "proxyCS", function () {
+    $client = new \pms\bear\ClientSync(get_env('PROXY_HOST'), get_env('PROXY_PROT'), 10);
     return $client;
 
 });

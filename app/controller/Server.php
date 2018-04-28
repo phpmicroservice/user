@@ -4,6 +4,7 @@ namespace app\controller;
 
 use app\Controller;
 use app\validator\user_exist;
+use pms\Dispatcher;
 
 
 /**
@@ -13,10 +14,26 @@ use app\validator\user_exist;
  */
 class Server extends Controller
 {
-    public function user_exit()
+    public function userExit()
     {
         $user_id = $this->getData('user_id');
-        $model = \app\model\user::findFirstById($user_id);
-        $this->connect->send_succee($model instanceof user);
+        $model = \app\model\user::findFirstById((int)$user_id);
+        $this->connect->send_succee($model instanceof \app\model\user);
     }
+
+
+    /**
+     * 在执行路由之前
+     * @return bool|void
+     */
+    public function beforeExecuteRoute(Dispatcher $dispatch)
+    {
+        $key = $this->connect->accessKey;
+        output([APP_SECRET_KEY, $this->connect->getData(), $this->connect->f], 'verify_access');
+        if (!verify_access($key, APP_SECRET_KEY, $this->connect->getData(), $this->connect->f)) {
+            $this->connect->send_error('accessKey-error', [], 412);
+            return false;
+        }
+    }
+
 }
