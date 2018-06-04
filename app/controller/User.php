@@ -12,11 +12,7 @@ use app\Controller;
 class User extends Controller
 {
 
-    public function rbac()
-    {
-        $info = \logic\rbac\Role::user($this->user_id);
-        return $this->send($info);
-    }
+
 
 
     public function edit_username()
@@ -29,7 +25,7 @@ class User extends Controller
 
     /**
      * 修改密码
-     * @return \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface
+     * @return mixed
      */
     public function edit_password()
     {
