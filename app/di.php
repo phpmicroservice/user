@@ -10,8 +10,6 @@ $loader = new \Phalcon\Loader();
 $loader->registerNamespaces(
     [
         'app' => ROOT_DIR . '/app/',
-        'pms' => ROOT_DIR . '/pms/',
-        'funch' => ROOT_DIR . '/tool/',
     ]
 );
 $loader->register();
