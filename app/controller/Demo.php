@@ -13,7 +13,7 @@ class Demo extends \pms\Controller
     public function index($data)
     {
         $this->connect->send_succee([
-            $data, "我是用户分组"
+            $data, "我是用户分组", APP_HOST_IP
         ]);
     }
 
