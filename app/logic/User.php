@@ -42,8 +42,6 @@ class User extends \app\Base
     }
 
 
-
-
     /**
      * 修改用户昵称
      * @param $user_id

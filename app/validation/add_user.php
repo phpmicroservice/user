@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Dongasai
- * Date: 2017/11/16
- * Time: 11:52
- */
 
 namespace app\validation;
 
@@ -15,8 +9,7 @@ namespace app\validation;
  */
 class add_user extends \pms\Validation
 {
-
-//定义验证规则
+    //定义验证规则
     protected $rule = [
         'username' => [
             'required' => [

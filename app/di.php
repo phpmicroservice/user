@@ -165,9 +165,8 @@ $di->set(
 
 });
 
-
 $di->setShared('logger', function () {
-    $logger = new \pms\Logger\Adapter\MysqlLog('log');
+    $logger = new \Phalcon\Logger\Adapter\File(RUNTIME_DIR . 'log/' . date('YmdHi') . '.log');
     return $logger;
 });
 

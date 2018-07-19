@@ -14,26 +14,25 @@ use pms\Dispatcher;
  */
 class Server extends Controller
 {
-    public function userExit()
+    /**
+     * 用户是否存在
+     */
+    public function user_exist()
     {
         $user_id = $this->getData('user_id');
         $model = \app\model\user::findFirstById((int)$user_id);
         $this->connect->send_succee($model instanceof \app\model\user);
     }
 
-
     /**
-     * 在执行路由之前
-     * @return bool|void
+     * 用户是否可以注册
      */
-    public function beforeExecuteRoute(Dispatcher $dispatch)
+    public function user_vareg()
     {
-        $key = $this->connect->accessKey;
-        output([APP_SECRET_KEY, $this->connect->getData(), $this->connect->f], 'verify_access');
-        if (!verify_access($key, APP_SECRET_KEY, $this->connect->getData(), $this->connect->f)) {
-            $this->connect->send_error('accessKey-error', [], 412);
-            return false;
-        }
+        $data = $this->getData();
+        $ser = new \app\logic\Reg();
+        $re = $ser->validation($data);
+        $this->connect->send_succee($re);
     }
 
 }
