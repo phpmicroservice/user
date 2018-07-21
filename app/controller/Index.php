@@ -138,7 +138,6 @@ class Index extends Controller
      */
     public function islogin()
     {
-
         output($this->session->getId(), 'session');
         $uid = $this->session->get('user_id');
         $this->connect->send_succee($uid);
