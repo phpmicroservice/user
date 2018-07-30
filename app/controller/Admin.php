@@ -25,4 +25,21 @@ class Admin extends Controller
         $this->send($infolist);
 
     }
+
+    /**
+     * 查找用户
+     * @return \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface
+     */
+    public function user_list()
+    {
+        $where=[];
+        $username = $this->getData('username');
+        if($username){
+            $where['username']=$username;
+        }
+        $page = $this->getData('p');
+        $service = new \app\logic\User();
+        $re = $service->user_list($where, $page);
+        return $this->send($re);
+    }
 }

@@ -99,4 +99,10 @@ class User extends \app\Base
         return $service->user_list(['user_name' => $username], 1, 20);
     }
 
+    public function user_list($where, $page, $row=20)
+    {
+        $service = new  service\User();
+        return $service->user_list($where, $page, $row);
+    }
+
 }
