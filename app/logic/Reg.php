@@ -91,7 +91,7 @@ class Reg extends \app\Base
             'birthday' => $data['birthday']??'1990-10-10',
             'personalized' => $data['personalized']??'这个家伙没有填写个性签名!!',
             'area' => $data['area']??'653221',
-            'headimg' => $data['gender']?? 0,
+            'headimg' => $data['headimg']?? 0,
             'lock' => 0,
             'nickname' => $data['nickname']
         ]);

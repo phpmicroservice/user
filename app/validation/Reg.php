@@ -57,13 +57,11 @@ class Reg extends \pms\Validation
     protected function initialize()
     {
         # nickname 验证
-        $this->add_required('nickname', [
-            'cancelOnFail' => true,
-        ]);
         $this->add_stringLength('nickname', [
             'cancelOnFail' => true,
             'max' => 20,
-            'min' => 2
+            'min' => 2,
+            'allowEmpty'=>true
         ]);
         # 唯一验证
         $this->add_exist('username', [

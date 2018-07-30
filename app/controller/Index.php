@@ -118,19 +118,7 @@ class Index extends Controller
         return $this->send($re);
     }
 
-    /**
-     * 多服务协同注册
-     *
-     */
-    public function reg_s()
-    {
 
-        $data = $this->getData();
-        $Reg = new \app\logic\Reg();
-        $Reg->setSwooleServer($this->swoole_server);
-        $re = $Reg->reg_s($data);
-        return $this->send($re);
-    }
 
     /**
      * 判断是否登录

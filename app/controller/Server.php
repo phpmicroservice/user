@@ -35,4 +35,20 @@ class Server extends Controller
         $this->connect->send_succee($re);
     }
 
+    /**
+     * 多服务协同注册
+     * 有其他服务发起
+     */
+    public function reg_s()
+    {
+
+        $data = $this->getData();
+        $Reg = new \app\logic\Reg();
+        $Reg->setSwooleServer($this->swoole_server);
+        $re = $Reg->reg_s($data);
+        var_dump($re);
+
+        return $this->send($re);
+    }
+
 }

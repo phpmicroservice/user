@@ -63,7 +63,12 @@ class Controller extends \pms\Controller
             $d = $re->toArray();
             $this->connect->send_error($d['message'], $d['data'], 424);
         } else {
-            $this->connect->send_succee($re, '成功');
+            if(is_string($re)){
+                $this->connect->send_error($re, '失败');
+            }else{
+                $this->connect->send_succee($re, '成功');
+            }
+
         }
     }
 

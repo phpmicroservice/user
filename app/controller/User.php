@@ -12,6 +12,9 @@ use app\Controller;
 class User extends Controller
 {
 
+    /**
+     * 修改用户名
+     */
     public function edit_username()
     {
         $new_username = $this->request->get('username', 'string', '');
