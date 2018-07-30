@@ -33,9 +33,9 @@ class Admin extends Controller
     public function user_list()
     {
         $where=[];
-        $username = $this->getData('username');
+        $username = $this->getData('user_name');
         if($username){
-            $where['username']=$username;
+            $where['user_name']=$username;
         }
         $page = $this->getData('p');
         $service = new \app\logic\User();
