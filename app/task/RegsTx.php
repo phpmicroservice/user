@@ -33,18 +33,24 @@ class RegsTx extends \pms\Task\TxTask implements TaskInterface
      */
     protected function logic()
     {
+
         $data = $this->getData();
+        var_dump($data);
         $ft = new Regs();
         $ft->filter($data);
         # 进行过滤
         $logic = new Reg();
         $re = $logic->regAction($data);
+        var_dump($re);
         if (is_string($re)) {
             # 失败
             return $re;
         }
         $txdata = $this->getData();
         $txdata['user_id'] = $re['user_id'];
+        if(!is_array($txdata['server'])){
+            return 'data-server-error';
+        }
         foreach ($txdata['server'] as $server) {
             $this->add_dependenc($server, 'regs', $txdata);
         }

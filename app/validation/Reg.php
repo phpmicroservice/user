@@ -11,15 +11,8 @@ use app\model\user;
  */
 class Reg extends \pms\Validation
 {
-    # 定义过滤规则
-    protected $filter_rule = [
-        ['username', 'string'],
-        ['password', 'string'],
-        ['password2', 'string'],
-        ['nickname', 'string'],
-    ];
     # 定义验证规则
-    protected $rule = [
+    protected $rules = [
         'username' => [
             'required' => [
                 'cancelOnFail' => true,
@@ -56,13 +49,7 @@ class Reg extends \pms\Validation
      */
     protected function initialize()
     {
-        # nickname 验证
-        $this->add_stringLength('nickname', [
-            'cancelOnFail' => true,
-            'max' => 20,
-            'min' => 2,
-            'allowEmpty'=>true
-        ]);
+
         # 唯一验证
         $this->add_exist('username', [
             'class_name_list' => user::class,

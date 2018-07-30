@@ -48,11 +48,14 @@ class Reg extends \app\Base
      */
     public function regAction($data)
     {
+        var_dump($data);
         # 进行验证
         $validation = new \app\validation\Reg();
+        var_dump($validation->validate($data));
         if (!$validation->validate($data)) {
             return $validation->getErrorMessages();
         }
+        var_dump(56);
         # 验证完成
         $userModel = new \app\model\user();
         $security = new \Phalcon\Security();
