@@ -12,6 +12,7 @@ use pms\Validation\Message\Group;
  * @property \Phalcon\Config $dConfig
  * @property \pms\Validation\Message\Group $message
  * @property \pms\bear\Client $clientSync
+ * @property \pms\bear\ClientSync $proxyCS
  * @package app\controller
  */
 class Controller extends \pms\Controller

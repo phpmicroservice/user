@@ -67,6 +67,15 @@ class Guidance extends \Phalcon\Di\Injectable
      */
     public function readySucceed(Event $event, \pms\Server $pms_server, \Swoole\Server $swoole_server)
     {
+        swoole_timer_tick(5000,function ()use ($swoole_server){
+            $task_data = [
+                'name' => 'Inituser',
+                'data' => [
+                ]
+            ];
+            $swoole_server->task($task_data, -1);
+        });
+
 
 
     }

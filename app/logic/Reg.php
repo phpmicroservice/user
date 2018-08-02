@@ -34,6 +34,9 @@ class Reg extends \app\Base
         }
         if (is_string($result['re'])) {
             # 失败
+            if(is_string($result['message'])){
+                return $result['message'];
+            }
             return $result['re'];
         }
         return [true, $result['xid']];

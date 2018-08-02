@@ -46,8 +46,6 @@ class Server extends Controller
         $Reg = new \app\logic\Reg();
         $Reg->setSwooleServer($this->swoole_server);
         $re = $Reg->reg_s($data);
-        var_dump($re);
-
         return $this->send($re);
     }
 

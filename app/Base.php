@@ -11,6 +11,7 @@ namespace app;
  * @property \Phalcon\Config $dConfig
  * @property \Phalcon\Validation\Message\Group $message
  * @property \swoole_server $swooleServer
+ * @property \pms\bear\ClientSync $proxyCS
  * @package app\controller
  */
 class Base extends \Phalcon\Di\Injectable
