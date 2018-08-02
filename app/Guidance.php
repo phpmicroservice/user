@@ -32,6 +32,23 @@ class Guidance extends \Phalcon\Di\Injectable
         output('beforeStart  beforeStart', 'beforeStart');
         # 写入依赖注入
 
+
+
+    }
+
+    public function onStart(Event $event, \pms\Server $pms_server, \Swoole\Server $server)
+    {
+        $pms_server->app->onBind('init',function (Event $event,  $app, \Swoole\Server $server){
+        swoole_timer_tick(5000,function ()use ($server){
+            $task_data = [
+                'name' => 'Inituser',
+                'data' => [
+                ]
+            ];
+            $server->task($task_data, -1);
+        });
+    });
+
     }
 
     /**
@@ -67,14 +84,7 @@ class Guidance extends \Phalcon\Di\Injectable
      */
     public function readySucceed(Event $event, \pms\Server $pms_server, \Swoole\Server $swoole_server)
     {
-        swoole_timer_tick(5000,function ()use ($swoole_server){
-            $task_data = [
-                'name' => 'Inituser',
-                'data' => [
-                ]
-            ];
-            $swoole_server->task($task_data, -1);
-        });
+
 
 
 

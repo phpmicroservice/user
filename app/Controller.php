@@ -17,7 +17,6 @@ use pms\Validation\Message\Group;
  */
 class Controller extends \pms\Controller
 {
-    protected $session_id;
     public $user_id;
 
     /**

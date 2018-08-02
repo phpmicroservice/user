@@ -25,10 +25,8 @@ class Message extends Controller
      */
     public function read()
     {
-        $p = [
-            'id' => ['get', 'id', 'int', 0]
-        ];
-        $data = $this->getData($p);
+
+        $data = $this->getData('id',0);
         $data['user_id'] = $this->user_id;
         $re = $this->MessageService->read($data);
         return $this->send($re);
@@ -41,10 +39,9 @@ class Message extends Controller
      */
     public function list4user()
     {
-        $type = $this->request->get('type', 'string', 'to');
-        $page = $this->request->get('p', 'int', 1);
-        $is_read = $this->request->get('is_read', 'int', -1);
-
+        $type = $this->getData('type', 'string', 'to');
+        $page = $this->getData('p', 'int', 1);
+        $is_read = $this->getData('is_read', 'int', -1);
         $re = $this->MessageService->list4user($this->user_id, $type, $is_read, $page);
         return $this->send($re);
     }
@@ -55,7 +52,7 @@ class Message extends Controller
      */
     public function info()
     {
-        $id = $this->request->get('id', 'int', 0);
+        $id = $this->getData('id', 'int', 0);
         $re = $this->MessageService->info4user($this->user_id, $id);
         return $this->send($re);
     }
@@ -65,14 +62,12 @@ class Message extends Controller
      */
     public function send()
     {
-        $p = [
-            'to_user_id' => ['post', 'to_user_id', 'int', 1],
-            'title' => ['post', 'title', 'string', ''],
-            'content' => ['post', 'content', 'string', ''],
-        ];
-        $data = $this->getData($p);
+        $to_user_id = $this->getData('to_user_id');
+        $title = $this->getData('title');
+        $content = $this->getData('content');
+
         $data['user_id'] = $this->user_id;
-        $re = $this->MessageService->send($this->user_id, $data['to_user_id'], $data['title'], $data['content']);
+        $re = $this->MessageService->send($this->user_id, $to_user_id, $title, $content);
         return $this->send($re);
     }
 }

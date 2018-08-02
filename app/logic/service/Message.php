@@ -1,6 +1,6 @@
 <?php
 
-namespace logic\user\service;
+namespace app\logic\service;
 
 use core\CoreService;
 use app\model\user_message;
@@ -135,7 +135,7 @@ class Message extends CoreService
         }
         $model->is_read = 1;
         if ($model->update() === false) {
-            return $model->getMessages();
+            return $model->getMessage();
         }
         return true;
 
