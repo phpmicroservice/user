@@ -29,12 +29,15 @@ class User extends Controller
      */
     public function edit_password()
     {
-        $parameter = [
-            'old_password' => ['post', 'old_password', 'string', ''],
-            'new_password' => ['post', 'new_password', 'string', ''],
-            'new_password2' => ['post', 'new_password2', 'string', ''],
+        $old_password = $this->getData('old_password');
+        $new_password = $this->getData('new_password');
+        $new_password2 = $this->getData('new_password2');
+        $data = [
+            'old_password' => $old_password,
+            'new_password' => $new_password,
+            'new_password2' => $new_password2,
         ];
-        $data = $this->getData($parameter);
+
         $User = new \app\logic\Password();
         $re = $User->edit_password($this->user_id, $data);
         return $this->send($re);

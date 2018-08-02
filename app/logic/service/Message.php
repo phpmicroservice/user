@@ -2,14 +2,15 @@
 
 namespace app\logic\service;
 
-use core\CoreService;
+use app\Base;
 use app\model\user_message;
+
 
 /**
  * Class Message 用户消息的服务层
  * @package logic\user\service
  */
-class Message extends CoreService
+class Message extends Base
 {
     /**
      * 发送消息
@@ -106,7 +107,7 @@ class Message extends CoreService
     private function call_list($data)
     {
         $array = $data->items->toArray();
-        $array = \tool\Arr::for_index($array, ['from_uid', 'to_uid'], function ($id_list) {
+        $array = \funch\Arr::for_index($array, ['from_uid', 'to_uid'], function ($id_list) {
             return \app\logic\User::get_userlist_uidarr($id_list);
         });
 
@@ -131,7 +132,7 @@ class Message extends CoreService
         ];
         $model = user_message::findFirst($where);
         if ($model === false) {
-            return '_Information that doesn~t exist';
+            return 'information-that-doesnt-exist';
         }
         $model->is_read = 1;
         if ($model->update() === false) {

@@ -3,6 +3,7 @@
 namespace app\logic;
 
 use app\model\user_tel;
+use app\validator\edit_password;
 
 /**
  * 用户密码
@@ -69,14 +70,14 @@ class Password extends \app\Base
         $validation = new \pms\Validation();
         $validation->add_Validator('user_id', [
             'message' => 'password',
-            'name' => validator\edit_password::class
+            'name' => edit_password::class
         ]);
         if (!$validation->validate($data)) {
-            return $validation->getMessage();
+            return $validation->getErrorMessages();
         }
         $UserModel = \app\model\user::findFirstById($user_id);
         $Security = new \Phalcon\Security();
-        $new_password = $Security->hash($data['new_password'] . $UserModel->username, 2);
+        $new_password = $Security->hash($data['new_password'] , 2);
 
         $UserModel->password = $new_password;
         if ($UserModel->update() === false) {

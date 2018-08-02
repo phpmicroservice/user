@@ -3,7 +3,7 @@
 namespace app\logic;
 
 /**
- *
+ * 消息
  * Class Message
  * @package logic\user
  * @property service\Message $Message

@@ -40,7 +40,7 @@ class Info extends Base
      * @param $user_id
      * @param $data
      */
-    public function edit($user_id, $data)
+    public function  edit($user_id, $data)
     {
         $data['user_id'] = $user_id;
 
@@ -112,7 +112,7 @@ class Info extends Base
         $info = $mode->toArray();
         $info2 = $info[0];
 
-        $info2['headimg'] = \logic\Attachment\attachmentArray::list4id($info2['headimg']);
+
         return $info2;
     }
 

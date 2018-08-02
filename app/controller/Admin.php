@@ -13,15 +13,26 @@ use app\Controller;
 class Admin extends Controller
 {
 
+    /**
+     * 重置密码
+     */
+    public function reset_password()
+    {
+        $user_id = $this->getData('user_id');
+        $ser = new \app\logic\service\User();
+        $re = $ser->reset_password($user_id);
+        $this->send($re);
+    }
+
 
     /**
      * id列表读取信息列表
      */
     public function idl2infol()
     {
-        $list =$this->getData('id_list');
-        $ser =new \app\logic\User();
-        $infolist=$ser->get_userlist_uidarr($list);
+        $list = $this->getData('id_list');
+        $ser = new \app\logic\User();
+        $infolist = $ser->get_userlist_uidarr($list);
         $this->send($infolist);
 
     }
@@ -32,10 +43,10 @@ class Admin extends Controller
      */
     public function user_list()
     {
-        $where=[];
+        $where = [];
         $username = $this->getData('user_name');
-        if($username){
-            $where['user_name']=$username;
+        if ($username) {
+            $where['user_name'] = $username;
         }
         $page = $this->getData('p');
         $service = new \app\logic\User();

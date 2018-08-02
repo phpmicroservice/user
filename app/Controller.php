@@ -2,8 +2,6 @@
 
 namespace app;
 
-use pms\Validation\Message\Group;
-
 
 /**
  * 主控制器
@@ -30,11 +28,6 @@ class Controller extends \pms\Controller
         } else {
             $this->user_id = 0;
         }
-        $this->di->setShared('message', function () {
-            return new Group();
-        });
-        $this->message->pruge();
-        parent::initialize();
     }
 
 
