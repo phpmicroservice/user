@@ -5,6 +5,7 @@ namespace app\logic;
 use app\Base;
 
 
+use app\filterTool\Editinfo;
 use app\model\user_info;
 use app\validation\edit_info;
 use PayPal\Api\FileAttachment;
@@ -43,10 +44,13 @@ class Info extends Base
     public function  edit($user_id, $data)
     {
         $data['user_id'] = $user_id;
-
+        #过滤
+        $ft=new  Editinfo();
+        $ft->filter($data);
+        # 验证
         $validation = new edit_info();
         if (!$validation->validate($data)) {
-            return $validation->getMessage();
+            return $validation->getErrorMessages();
         }
 
         # 验证完成,
@@ -54,10 +58,6 @@ class Info extends Base
         if (!($mode instanceof user_info)) {
             $mode = new user_info();
         }
-        # 数据处理
-        $attachmentArray = new \logic\Attachment\attachmentArray();
-        $data['lock'] = 0;
-        $data['headimg'] = $attachmentArray->one($data['user_id'], 'headimg', $mode->headimg, $data['headimg']);
 
         #进行增加或者编辑
         $mode->setData($data);
@@ -75,21 +75,19 @@ class Info extends Base
     public function info_user($user_id)
     {
         # 读取基本信息
-        $Builde = $this->modelsManager->createBuilder();
-        $mode = $Builde->from(['user_info' => user_info::class])
-            ->join(\app\model\user::class, 'user_info.user_id = user.id', 'user')
-            ->columns('user_info.*,user.*')
-            ->where('user_id=:user_id:', ['user_id' => $user_id])
-            ->getQuery()->execute();
+       $info=\app\model\user::findFirst($user_id);
 
-        if (empty($mode->toArray())) {
-            return [];
-        }
-        $info = $mode->toArray();
-        $info2 = $info[0];
-        $info2['user_info']->headimg = \logic\Attachment\attachmentArray::list4id($info2['user_info']->headimg);
-        return $info2;
+       if($info instanceof \app\model\user){
+           $info2=user_info::findFirstByuser_id($user_id);
+           if($info2 instanceof  user_info){
+               return array_merge($info->toArray(),$info2->toArray());
+           }else{
+               return $info->toArray();
+           }
 
+       }else{
+           return [];
+       }
     }
 
     /**

@@ -24,15 +24,6 @@ class Info extends Controller
     public function edit()
     {
 
-        $data = $this->getData([
-            'nickname' => ['post', 'nickname', 'string', ''],
-            'headimg' => ['post', 'headimg', 'int', 0],
-            'gender' => ['post', 'gender', 'int', 0],
-            'birthday' => ['post', 'birthday', 'string', '1994-06-09'],
-            'personalized' => ['post', 'personalized', 'string', '签名'],
-            'area' => ['post', 'area', 'int', 0],
-        ]);
-
         $data=$this->getData();
         $service = new \app\logic\Info();
         $re = $service->edit($this->user_id, $data);
@@ -47,7 +38,7 @@ class Info extends Controller
     {
         $service = new \app\logic\Info();
         $re = $service->info_user($this->user_id);
-
+        var_dump($re);
         return $this->send($re);
     }
 

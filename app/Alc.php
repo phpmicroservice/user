@@ -75,11 +75,10 @@ class Alc extends Base
         $c=$dispatcher->getTaskName();
         $a=$dispatcher->getActionName();
         $re =$this->proxyCS->request_return('rbac','/index/alc',['u'=>$u,'c'=>$c,'a'=>$a]);
-        if(!$re['e']){
+        if($re['e']){
             return false;
         }
         return $re['d'];
-
     }
 
 

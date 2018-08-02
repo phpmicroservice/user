@@ -16,6 +16,7 @@ class Editinfo extends FilterTool
         ['headimg','int'],
         ['gender','int'],
         ['birthday','string'],
+        ['user_id','int'],
         ['personalized','string'],
         ['area','string']
     ];
