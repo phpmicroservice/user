@@ -65,6 +65,7 @@ class Index extends Controller
         $Login = new \app\logic\Login();
         $re = $Login->loginAction($data);
         if (is_int($re)) {
+            $this->session->destroy();
             $this->session->set('user_id', $re);
         }
         output($this->session->get('user_id'), 'user_id');
@@ -157,8 +158,8 @@ class Index extends Controller
      */
     public function exitlogin()
     {
-        $this->session->set('user_id', 0);
-        $this->session->reserve();
+        //$this->session->set('user_id', 0);
+        $this->session->destroy();
         $this->connect->send_succee([], "退出成功!");
     }
 
