@@ -108,7 +108,7 @@ class Reg extends \app\Base
         # 进行验证
         $validation = new \app\validation\Reg();
         if (!$validation->validate($data)) {
-            return $validation->getMessage();
+            return $validation->getErrorMessages();
         }
         return $this->reg($data);
     }
