@@ -51,36 +51,14 @@ class Reg extends \app\Base
      */
     public function regAction($data)
     {
-        var_dump($data);
         # 进行验证
         $validation = new \app\validation\Reg();
         var_dump($validation->validate($data));
         if (!$validation->validate($data)) {
             return $validation->getErrorMessages();
         }
-        var_dump(56);
-        # 验证完成
-        $userModel = new \app\model\user();
-        $security = new \Phalcon\Security();
-        $data['username'] = $data['username'] ? $data['username'] : uniqid();
-        //密码加密
-        $data['password'] = $security->hash($data['password'], 2);
-        //进行注册 增加用户信息
 
-        $data['nickname'] = $data['nickname'] ? $data['nickname'] : $data['username'];
-        $data['create_time'] = time();
-        $data['update_time'] = 0;
-        $data['edit_username'] = 0;
-        $re33 = $userModel->save($data);
-        if ($re33 === false) {
-            return $userModel->getMessage();
-        }
-        # 进行注册后的操作
-        $re42 = $this->initReg($userModel->id, $data);
-        if (is_string($re33)) {
-            return $re42;
-        }
-        return ['user_id' => $userModel->id];
+        $this->reg();
     }
 
     /**
@@ -127,36 +105,45 @@ class Reg extends \app\Base
      */
     public function add($data)
     {
-
-
         # 进行验证
-        $validation = new \app\validation\add_user();
+        $validation = new \app\validation\Reg();
         if (!$validation->validate($data)) {
             return $validation->getMessage();
         }
+        return $this->reg($data);
+    }
+
+    /**
+     * 注册用户
+     * @param $data
+     * @return array|bool|string
+     */
+    private function reg($data)
+    {
+
         # 验证完成
         $userModel = new \app\model\user();
         $security = new \Phalcon\Security();
+        $data['username'] = $data['username'] ? $data['username'] : uniqid();
         //密码加密
         $data['password'] = $security->hash($data['password'], 2);
         //进行注册 增加用户信息
-        $this->transactionManager->get();
 
+        $data['nickname'] = $data['nickname'] ? $data['nickname'] : $data['username'];
         $data['create_time'] = time();
         $data['update_time'] = 0;
+        $data['edit_username'] = 0;
+        
         $re33 = $userModel->save($data);
         if ($re33 === false) {
-            $this->transactionManager->rollback();
             return $userModel->getMessage();
         }
         # 进行注册后的操作
         $re42 = $this->initReg($userModel->id, $data);
         if (is_string($re33)) {
-            $this->transactionManager->rollback();
             return $re42;
         }
-        $this->transactionManager->commit();
-        return ['id' => $userModel->id];
+        return ['user_id' => $userModel->id];
     }
 
 

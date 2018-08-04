@@ -53,4 +53,13 @@ class Admin extends Controller
         $re = $service->user_list($where, $page);
         return $this->send($re);
     }
+
+
+    public function add_user()
+    {
+        $data = $this->getData();
+        $Reg = new \app\logic\Reg();
+        $re = $Reg->add($data);
+        return $this->send($re);
+    }
 }
