@@ -34,7 +34,7 @@ class Reg extends \app\Base
         }
         if (is_string($result['re'])) {
             # 失败
-            if(is_string($result['message'])){
+            if (is_string($result['message'])) {
                 return $result['message'];
             }
             return $result['re'];
@@ -58,7 +58,7 @@ class Reg extends \app\Base
             return $validation->getErrorMessages();
         }
 
-        $this->reg();
+        return $this->reg($data);
     }
 
     /**
@@ -133,7 +133,7 @@ class Reg extends \app\Base
         $data['create_time'] = time();
         $data['update_time'] = 0;
         $data['edit_username'] = 0;
-        
+
         $re33 = $userModel->save($data);
         if ($re33 === false) {
             return $userModel->getMessage();
