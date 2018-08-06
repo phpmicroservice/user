@@ -12,10 +12,16 @@ class Inituser extends Task
 
     public function run()
     {
+        var_dump(__CLASS__);
+        $logger=\Phalcon\Di::getDefault()->get('logger');
+        $logger->info(__CLASS__);
         # 初始化用户,读取需要初始化的用户
         for ($i = 1; $i <= 10; $i++) {
             $i = $this->updateuser();
         }
+    }
+    public function end(){
+        
     }
 
     private function updateuser()
@@ -25,7 +31,7 @@ class Inituser extends Task
         ]);
         if (!($usermodel instanceof user)) {
             # 没有需要更新的用户
-            return -2;
+            return 11;
         }
         # 查看其是否已经初始化
         if ($this->is_init($usermodel)) {

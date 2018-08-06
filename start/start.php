@@ -36,4 +36,5 @@ $server = new \pms\Server('0.0.0.0', 9502, SWOOLE_PROCESS, SWOOLE_SOCK_TCP, [
 $guidance = new \app\Guidance();
 $server->onBind('onWorkerStart', $guidance);
 $server->onBind('beforeStart', $guidance);
+$server->onBind('onStart', $guidance);
 $server->start();

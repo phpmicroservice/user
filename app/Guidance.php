@@ -38,16 +38,7 @@ class Guidance extends \Phalcon\Di\Injectable
 
     public function onStart(Event $event, \pms\Server $pms_server, \Swoole\Server $server)
     {
-        $pms_server->app->onBind('init',function (Event $event,  $app, \Swoole\Server $server){
-        swoole_timer_tick(5000,function ()use ($server){
-            $task_data = [
-                'name' => 'Inituser',
-                'data' => [
-                ]
-            ];
-            $server->task($task_data, -1);
-        });
-    });
+
 
     }
 
@@ -68,6 +59,17 @@ class Guidance extends \Phalcon\Di\Injectable
         $this->eventsManager->attach('dispatch:beforeNotFoundHandler', new NotFound());
         $this->eventsManager->attach('dispatch:beforeNotFoundAction', new NotFound());
         $this->eventsManager->attach('dispatch:beforeDispatch', new Alc(), 1);
+        $pms_server->app->onBind('init',function (Event $event,  $app, \Swoole\Server $server){
+            $rer =swoole_timer_tick(5000,function ()use ($server){
+                $task_data = [
+                    'name' => 'Inituser',
+                    'data' => [
+                    ]
+                ];
+                $server->task($task_data, -1);
+            });
+            var_dump(['73',$rer]);
+        });
     }
 
     /**
