@@ -185,12 +185,9 @@ class Email extends \app\Base
             'uqid' => uniqid()
         ];
         $re = $this->proxyCS->request_return('email', '/sende/send2', $d);
-        var_dump($re);
         if ($re['e']) {
             # 出错
-            output($re, 'error');
-            $this->message->appendMessage(new \Phalcon\Validation\Message('邮件发送失败', 'email', 'type'));
-            return $this->message;
+            return 'sys-error';
         } else {
             # 成功
             return true;
