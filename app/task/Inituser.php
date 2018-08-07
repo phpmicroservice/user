@@ -12,7 +12,6 @@ class Inituser extends Task
 
     public function run()
     {
-        var_dump(__CLASS__);
         $logger=\Phalcon\Di::getDefault()->get('logger');
         $logger->info(__CLASS__);
         # 初始化用户,读取需要初始化的用户

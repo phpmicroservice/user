@@ -6,7 +6,7 @@ use app\Controller;
 
 /**
  *  Lv 等级的控制器
- * Class EmailController
+ * Class Lv
  * @package apps\home\controllers
  */
 class Lv extends Controller

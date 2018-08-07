@@ -31,18 +31,6 @@ class Controller extends \pms\Controller
     }
 
 
-    /**
-     * 获取数据
-     * @param $pa
-     */
-    public function getData($name = '')
-    {
-        $d = $this->connect->getData();
-        if ($name) {
-            return $d[$name] ?? null;
-        }
-        return $d;
-    }
 
 
     /**

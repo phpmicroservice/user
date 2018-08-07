@@ -5,6 +5,7 @@ namespace app\controller;
 use app\Controller;
 use app\logic\Info;
 use app\logic\Login;
+use app\logic\Password;
 use app\logic\Tel;
 use funch\Str;
 
@@ -150,6 +151,29 @@ class Index extends Controller
         $User = new \app\logic\Password();
         $re = $User->retrieve_password($data);
         return $this->send($re);
+    }
+
+    /**
+     * 重置密码邮件找回
+     */
+    public function retrieve_epassword()
+    {
+        $data = $this->getData();
+        $User = new \app\logic\Password();
+        $re = $User->retrieve_epassword($data);
+        return $this->send($re);
+    }
+
+    /**
+     * 邮箱找回密码
+     */
+    public function email_repassword()
+    {
+        $email=$this->getData('email');
+        $username=$this->getData('username');
+        $ser=new Password();
+        $re =$ser->email_repassword($email,$username);
+        $this->send($re);
     }
 
 

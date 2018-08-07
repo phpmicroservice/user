@@ -1,26 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Dongasai
- * Date: 2018/1/24
- * Time: 15:32
- */
 
 namespace app\validation;
 
-
 use app\validator\user_exist;
 
-class user_email extends \pms\Validation
+/**
+ * 邮箱验证
+ * Class EmailCaptcha
+ * @package app\validation
+ */
+class EmailCaptcha extends \pms\Validation
 {
 
     protected function initialize()
     {
         # 验证用户
-        $this->add_Validator('user_id', [
-            'name' => user_exist::class,
-            'message' => 'user'
-        ]);
         # 验证邮箱
         $this->add_email('email', [
             'message' => 'email'
@@ -30,14 +24,14 @@ class user_email extends \pms\Validation
     }
     public function beforeValidation1($data)
     {
-# 邮箱重复验证
+        # 验证邮箱存在
         $this->add_where('email',[
             'wheres'=>[
-                'email'=>$data['email'],
-                'status'=>1
+                'email'=>'email',
+                'status'=>'status1'
             ],
-            'negation'=>true,
-            'model'=>\app\model\user_email::class
+            'model'=>\app\model\user_email::class,
+            'message'=>'email1'
         ]);
     }
 }
