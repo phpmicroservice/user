@@ -154,7 +154,7 @@ class Index extends Controller
     }
 
     /**
-     * 重置密码邮件找回
+     * 重置密码邮件找回 2
      */
     public function retrieve_epassword()
     {
@@ -165,7 +165,7 @@ class Index extends Controller
     }
 
     /**
-     * 邮箱找回密码
+     * 邮箱找回密码 1
      */
     public function email_repassword()
     {

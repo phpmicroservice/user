@@ -53,7 +53,7 @@ class Password extends \app\Base
         # 验证
         $va = new  \app\validation\Emailretpw();
         if (!$va->validate($data)) {
-            $va->getErrorMessages();
+            return $va->getErrorMessages();
         }
         #验证码
         $emailser = new Email(0);
