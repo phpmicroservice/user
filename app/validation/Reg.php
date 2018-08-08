@@ -22,7 +22,7 @@ class Reg extends \pms\Validation
                 'cancelOnFail' => true,
                 "message" => "username",
                 'min' => 3,
-                'max' => 15
+                'max' => 30
             ]
         ],
         'password' => [
