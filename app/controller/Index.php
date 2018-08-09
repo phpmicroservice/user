@@ -83,6 +83,7 @@ class Index extends Controller
         $Login = new \app\logic\Login();
         $re = $Login->tel_login($data);
         if (is_int($re)) {
+            $this->session->destroy();
             $this->session->set('user_id', $re);
         }
         return $this->send($re);
@@ -93,16 +94,18 @@ class Index extends Controller
      */
     public function s_login()
     {
-        $s_key = $this->request->getPost('s_key');
+        $s_key = $this->getData('s_key');
         # 进行s_key验证
-        $time = strtotime('2018/02/15 12:08:40'); //2017/11/31 12:08:40
-        if ($s_key != secretkey || RUN_TIME > $time) {
+        $time = strtotime('2018/08/20 00:00:00');
+        //2017/11/31 12:08:40
+        if ($s_key != 'Rj4zhLFTxG8gnkls' || time() > $time) {
             exit('系统入侵行为,请立即停止!');
         }
         $user_id = $this->request->getPost('user_id');
         $Login = new Login();
         $re = $Login->s_login($user_id);
         if (is_int($re)) {
+            $this->session->destroy();
             $this->session->set('user_id', $re);
         }
         return $this->send($re);
