@@ -81,8 +81,8 @@ class Login extends \pms\Validation
         # 验证码
         $this->add_Validator('captcha_value',[
             'name'=>ServerAction::class,
+            'server_action'=>'validation@/server/true_check',
             'data'=>[
-                'server_action'=>'validation@/server/true_check',
                 "sn"=>'user',
                 "operation"=>'login',
                 "value"=>$data['captcha_value'],
