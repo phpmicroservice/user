@@ -30,7 +30,7 @@ class Login extends \app\Base
             'message' => 'aa'
         ]);
         if (!$validation->validate(['user_id' => $user_id])) {
-            return $validation->getMessage();
+            return $validation->getErrorMessages();
         }
 
         return $this->loginLater($user_id);
