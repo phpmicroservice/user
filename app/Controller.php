@@ -49,7 +49,6 @@ class Controller extends \pms\Controller
             }else{
                 $this->connect->send_succee($re, '成功');
             }
-
         }
     }
 

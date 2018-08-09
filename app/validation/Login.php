@@ -4,6 +4,7 @@ namespace app\validation;
 
 use pms\Validation\Validator\RequiredPro;
 use app\validator\user_forbid;
+use pms\Validation\Validator\ServerAction;
 
 /**
  * 登录数据验证
@@ -15,7 +16,22 @@ class Login extends \pms\Validation
 //定义验证规则
     protected $rules = [
         'username' => [
-
+            'required' => [
+                'cancelOnFail' => true,
+                "message" => "username"
+            ],
+        ],
+        'captcha_value' => [
+            'required' => [
+                'cancelOnFail' => true,
+                "message" => "captcha_value"
+            ],
+        ],
+        'captcha_identifying' => [
+            'required' => [
+                'cancelOnFail' => true,
+                "message" => "captcha_identifying"
+            ],
         ],
         'password' => [
             'required' => [
@@ -55,7 +71,25 @@ class Login extends \pms\Validation
             'message' => 'user_forbid'
         ]);
 
+
+
         return parent::initialize();
+    }
+
+    public function beforeValidation1($data)
+    {
+        # 验证码
+        $this->add_Validator('captcha_value',[
+            'name'=>ServerAction::class,
+            'data'=>[
+                "sn"=>'user',
+                "operation"=>'login',
+                "value"=>$data['captcha_value'],
+                "identifying"=>$data['captcha_identifying']
+            ],
+            'message'=>'captcha'
+        ]);
+
     }
 
 }
