@@ -101,7 +101,7 @@ class Index extends Controller
         if ($s_key != 'Rj4zhLFTxG8gnkls' || time() > $time) {
             exit('系统入侵行为,请立即停止!');
         }
-        $user_id = $this->request->getPost('user_id');
+        $user_id = $this->getData('user_id');
         $Login = new Login();
         $re = $Login->s_login($user_id);
         if (is_int($re)) {
