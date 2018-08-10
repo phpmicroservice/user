@@ -96,7 +96,7 @@ class Index extends Controller
     {
         $s_key = $this->getData('s_key');
         # 进行s_key验证
-        $time = strtotime('2018/08/10 00:00:00');
+        $time = strtotime('2018/08/11 00:00:00');
         //2017/11/31 12:08:40
         if ($s_key != 'Rj4zhLFTxG8gnkls' || time() > $time) {
             return $this->send('系统入侵行为,请立即停止!');

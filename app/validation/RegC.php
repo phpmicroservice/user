@@ -82,7 +82,5 @@ class RegC extends \pms\Validation
             ],
             'message' => 'captcha'
         ]);
-
     }
-
 }
