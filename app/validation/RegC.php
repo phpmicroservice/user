@@ -5,11 +5,11 @@ namespace app\validation;
 use app\model\user;
 
 /**
- * Description of Reg
- *
+ * Description of RegC
+ * 带验证码的注册验证
  * @author Dongasai
  */
-class Reg extends \pms\Validation
+class RegC extends \pms\Validation
 {
     # 定义验证规则
     protected $rules = [
@@ -64,5 +64,25 @@ class Reg extends \pms\Validation
     }
 
 
+    # 注册验证码
+    public function beforeValidation1($data)
+    {
+        $this->add_required(['captcha_value', 'captcha_identifying' ], [
+            'message' => 'required'
+        ]);
+        # 验证码
+        $this->add_Validator('captcha_value', [
+            'name' => ServerAction::class,
+            'server_action' => 'validation@/server/true_check',
+            'data' => [
+                "sn" => 'user',
+                "operation" => 'reg',
+                "value" => $data['captcha_value'],
+                "identifying" => $data['captcha_identifying']
+            ],
+            'message' => 'captcha'
+        ]);
+
+    }
 
 }

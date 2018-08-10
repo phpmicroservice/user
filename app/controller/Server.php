@@ -3,6 +3,7 @@
 namespace app\controller;
 
 use app\Controller;
+use app\validation\Reg;
 use app\validator\user_exist;
 use pms\Dispatcher;
 
@@ -43,6 +44,7 @@ class Server extends Controller
     {
 
         $data = $this->getData();
+
         $Reg = new \app\logic\Reg();
         $Reg->setSwooleServer($this->swoole_server);
         $re = $Reg->reg_s($data);

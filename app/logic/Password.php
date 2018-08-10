@@ -141,7 +141,6 @@ class Password extends \app\Base
         $UserModel = \app\model\user::findFirstById($user_id);
         $Security = new \Phalcon\Security();
         $new_password = $Security->hash($data['new_password'], 2);
-
         $UserModel->password = $new_password;
         if ($UserModel->update() === false) {
             return $UserModel->getMessage();

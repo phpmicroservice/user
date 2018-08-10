@@ -75,7 +75,7 @@ class Login extends \pms\Validation
 
         return parent::initialize();
     }
-
+    
     public function beforeValidation1($data)
     {
         # 验证码

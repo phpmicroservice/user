@@ -20,6 +20,12 @@ class Reg extends \app\Base
      */
     public function reg_s($data)
     {
+        # 数据验证
+        $va = new \app\validation\RegC();
+        if (!$va->validate()) {
+            return $va->getErrorMessages();
+        }
+
         # 涉及多服务同时同时更新采用全局事务
         $task_data = [
             'name' => 'RegsTx',
