@@ -3,6 +3,7 @@
 namespace app\validation;
 
 use app\model\user;
+use pms\Validation\Validator\ServerAction;
 
 /**
  * Description of RegC
