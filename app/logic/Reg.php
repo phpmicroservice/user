@@ -22,7 +22,7 @@ class Reg extends \app\Base
     {
         # 数据验证
         $va = new \app\validation\RegC();
-        if (!$va->validate()) {
+        if (!$va->validate($data)) {
             return $va->getErrorMessages();
         }
 
