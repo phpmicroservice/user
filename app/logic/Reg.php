@@ -12,8 +12,7 @@ use app\model\user_tel;
  */
 class Reg extends \app\Base
 {
-
-
+    
     /**
      *
      * 多服务协同注册流程

@@ -17,7 +17,7 @@ class User extends Controller
      */
     public function edit_username()
     {
-        $new_username = $this->request->get('username', 'string', '');
+        $new_username = $this->getData('username', '');
         $User = new \app\logic\User();
         $re = $User->edit_username($this->user_id, $new_username);
         return $this->send($re);
