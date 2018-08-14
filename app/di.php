@@ -183,6 +183,7 @@ $di["db"] = function () use ($di) {
             "username" => getenv('MYSQL_USERNAME'),
             "password" => getenv('MYSQL_PASSWORD'),
             "dbname" => getenv('MYSQL_DBNAME'),
+            'persistent'=>true,
             "options" => [
                 \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'",
                 \PDO::ATTR_CASE => \PDO::CASE_LOWER,
