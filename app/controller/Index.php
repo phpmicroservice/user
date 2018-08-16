@@ -20,29 +20,9 @@ class Index extends Controller
     {
         $this->connect->send_succee(md5(md5(time()) . mt_rand(1, 999999)));
     }
-    /**
-     * 用户公共信息
-     */
-    public function user_info()
-    {
-        $user_id = $this->request->get('user_id', 'int', 0);
-        $user = new Info();
-        $ser = $user->p_info($user_id);
-        return $this->send($ser);
-    }
 
 
-    /**
-     * 判断手机是否注册
-     * @return \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface
-     */
-    public function tel_is_reg()
-    {
-        $tel = $this->request->get('tel', 'string', 0);
-        $user_Tel = new Tel();
-        $ser = $user_Tel->tel_is_reg($tel);
-        return $this->send($ser);
-    }
+
 
 
     /**

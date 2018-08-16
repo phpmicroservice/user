@@ -11,7 +11,7 @@
  &nbsp;&nbsp;&nbsp;&nbsp;|- _**model**_ 模型 \
  &nbsp;&nbsp;&nbsp;&nbsp;|- _**processor**_ 处理器 \
  &nbsp;&nbsp;&nbsp;&nbsp;|- _**table**_ 共享内存表格 \
- &nbsp;&nbsp;&nbsp;&nbsp;|- _**task**_ task任务 \
+ &nbsp;&nbsp;&nbsp;&nbsp;|- _**task**_ task任务/全局事务 \
  &nbsp;&nbsp;&nbsp;&nbsp;|- _**validation**_ 验证 \
  &nbsp;&nbsp;&nbsp;&nbsp;|- _**validator**_ 验证器 \
  &nbsp;&nbsp;&nbsp;&nbsp;|- _Alc.php_ **权限控制** \
@@ -67,5 +67,6 @@
  |VALIDATION_APP_SECRET_KEY|验证服务的通讯秘钥||
  |EMAIL_APP_SECRET_KEY|邮件服务通讯秘钥|
  |RBAC_APP_SECRET_KEY|RBAC服务通讯密钥|
- |REGISTER_SECRET_KEY|服务注册通讯秘钥|
+ |REGISTER_APP_SECRET_KEY|服务注册通讯秘钥|
+ |TM_APP_SECRET_KEY|全局事务模块通讯秘钥|
  

@@ -15,7 +15,6 @@ if (is_string($re9)) {
 }
 
 
-
 //注册自动加载
 $loader = new \Phalcon\Loader();
 $loader->registerNamespaces(
