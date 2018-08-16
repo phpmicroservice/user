@@ -41,8 +41,8 @@
  |环境变量标识(全大写)|含义|默认值|
  |:---|:---:|---:|
  |APP_DEBUG|是否开启DEBUG|1|
- |APP_SECRET_KEY|秘钥||
- |NO_OUTPUT|不输出命令行西悉尼|1|
+ |APP_SECRET_KEY|通讯秘钥||
+ |NO_OUTPUT|不输出命令行内容|1|
  |---|---|---|
  |MYSQL_HOST|mysql地址||
  |MYSQL_PORT|mysql的数据库名||
