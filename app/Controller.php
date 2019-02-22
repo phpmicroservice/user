@@ -11,6 +11,7 @@ namespace app;
  * @property \pms\Validation\Message\Group $message
  * @property \pms\bear\Client $clientSync
  * @property \pms\bear\ClientSync $proxyCS
+ * @property \Logger $logger
  * @package app\controller
  */
 class Controller extends \pms\Controller

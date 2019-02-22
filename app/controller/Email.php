@@ -61,7 +61,7 @@ class Email extends Controller
         $security = $this->getData('security');
         $service = new \app\logic\Email($this->user_id);
         $re = $service->security_check($security);
-        output($re, 're');
+        \pms\output($re, 're');
         return $this->send($re);
     }
 

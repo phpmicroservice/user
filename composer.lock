@@ -4,8 +4,117 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a6c7523cae00d78fc048faef5d4f2e3",
+    "content-hash": "b0366a371df13f3e394a3a342081fe94",
     "packages": [
+        {
+            "name": "apache/log4php",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apache/logging-log4php.git",
+                "reference": "cac428b6f67d2035af39784da1d1a299ef42fcf2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apache/logging-log4php/zipball/cac428b6f67d2035af39784da1d1a299ef42fcf2",
+                "reference": "cac428b6f67d2035af39784da1d1a299ef42fcf2",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.2.7"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/main/php/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "A versatile logging framework for PHP",
+            "homepage": "http://logging.apache.org/log4php/",
+            "keywords": [
+                "log",
+                "logging",
+                "php"
+            ],
+            "time": "2012-10-26T09:13:25+00:00"
+        },
+        {
+            "name": "phalcon/cphalcon",
+            "version": "v3.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon/cphalcon.git",
+                "reference": "caeac66e7db02fd54c44a27cf22a6381654af2ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon/cphalcon/zipball/caeac66e7db02fd54c44a27cf22a6381654af2ee",
+                "reference": "caeac66e7db02fd54c44a27cf22a6381654af2ee",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "codeception/codeception": "^2.3",
+                "codeception/specify": "^0.4",
+                "codeception/verify": "^0.3",
+                "doctrine/instantiator": "1.0.5",
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-xml": "*",
+                "mustache/mustache": "^2.11",
+                "phalcon/zephir": "^0.10",
+                "phpdocumentor/reflection-docblock": "^2.0",
+                "phpunit/phpunit": "^4.8",
+                "predis/predis": "^1.1",
+                "squizlabs/php_codesniffer": "^2.9",
+                "twig/twig": "~1.34"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/phalcon/cphalcon/graphs/contributors"
+                },
+                {
+                    "name": "Phalcon Team",
+                    "email": "team@phalconphp.com",
+                    "homepage": "https://phalconphp.com/en/team"
+                }
+            ],
+            "description": "Phalcon is an open source web framework delivered as a C extension for the PHP language providing high performance and lower resource consumption.",
+            "keywords": [
+                "extension",
+                "framework",
+                "high load",
+                "mvc",
+                "phalcon"
+            ],
+            "time": "2018-08-05T15:33:04+00:00"
+        },
         {
             "name": "phpmicroservice/funch",
             "version": "0.0.4",
@@ -58,23 +167,17 @@
         },
         {
             "name": "phpmicroservice/pms-frame",
-            "version": "0.3.4",
+            "version": "0.3.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmicroservice/pms.git",
-                "reference": "ef86cfb6a6f73e34080656e8400bd8679568789a"
+                "reference": "8a96725585908a21c8d6ac407d1a2258ca9890c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmicroservice/pms/zipball/ef86cfb6a6f73e34080656e8400bd8679568789a",
-                "reference": "ef86cfb6a6f73e34080656e8400bd8679568789a",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/phpmicroservice/pms/zipball/8a96725585908a21c8d6ac407d1a2258ca9890c6",
+                "reference": "8a96725585908a21c8d6ac407d1a2258ca9890c6",
+                "shasum": ""
             },
             "require": {
                 "ext-phalcon": "3.4.*",
@@ -91,9 +194,11 @@
             "autoload": {
                 "psr-4": {
                     "pms\\": "src/"
-                }
+                },
+                "files": [
+                    "src/function.php"
+                ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -108,21 +213,132 @@
             "description": "一个采用Swoole做底层,采用Phalcon作为框架类库的微服务框架",
             "homepage": "http://pms.2xso.com",
             "keywords": [
-                "Microservice",
+                "microservice",
                 "phalcon",
                 "swoole",
                 "tcp",
                 "websockect"
             ],
-            "time": "2019-02-12T12:23:24+00:00"
+            "support": {
+                "source": "https://github.com/phpmicroservice/pms/tree/0.3",
+                "issues": "https://github.com/phpmicroservice/pms/issues"
+            },
+            "time": "2019-02-17T10:16:48+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "eaglewu/swoole-ide-helper",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wudi/swoole-ide-helper.git",
+                "reference": "fae3d09e7494245a5bab0adcd09a1612fc4112b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wudi/swoole-ide-helper/zipball/fae3d09e7494245a5bab0adcd09a1612fc4112b5",
+                "reference": "fae3d09e7494245a5bab0adcd09a1612fc4112b5",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "eagle",
+                    "email": "eaglewudi@gmail.com",
+                    "role": "lead"
+                }
+            ],
+            "description": "Swoole IDE Helper, to improve auto-completion",
+            "keywords": [
+                "autocomplete",
+                "codeintel",
+                "helper",
+                "ide",
+                "netbeans",
+                "phpdoc",
+                "phpstorm",
+                "sublime",
+                "swoole"
+            ],
+            "time": "2019-02-12T03:03:41+00:00"
+        },
+        {
+            "name": "phalcon/ide-stubs",
+            "version": "v3.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon/ide-stubs.git",
+                "reference": "65144f2b0fad32b182ccb062b1efc1b4edea5d44"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon/ide-stubs/zipball/65144f2b0fad32b182ccb062b1efc1b4edea5d44",
+                "reference": "65144f2b0fad32b182ccb062b1efc1b4edea5d44",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Phalcon Team",
+                    "email": "team@phalconphp.com",
+                    "homepage": "https://phalconphp.com/en/team"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/phalcon/ide-stubs/graphs/contributors"
+                }
+            ],
+            "description": "The most complete Phalcon Framework IDE stubs library which enables autocompletion in modern IDEs.",
+            "homepage": "https://phalconphp.com",
+            "keywords": [
+                "Devtools",
+                "Eclipse",
+                "autocomplete",
+                "ide",
+                "netbeans",
+                "phalcon",
+                "phpstorm",
+                "stub",
+                "stubs"
+            ],
+            "time": "2018-12-09T14:11:06+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "phpmicroservice/pms-frame": 20,
+        "eaglewu/swoole-ide-helper": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-memcached": "*",
+        "ext-pdo": "*"
+    },
     "platform-dev": []
 }

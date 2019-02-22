@@ -1,8 +1,5 @@
 <?php
 
-use Phalcon\Mvc\Url as UrlResolver;
-use Phalcon\Mvc\Model\Manager as ModelsManager;
-use Phalcon\Events\Manager;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 //注册自动加载
@@ -99,13 +96,13 @@ $di->setShared('sessionCache', function () use ($di) {
             "lifetime" => 172800,
         ]
     );
-    output($di['config']->cache, 'gCache');
+    \pms\output($di['config']->cache, 'gCache');
     $op = [
         "host" => getenv('SESSION_CACHE_HOST'),
-        "port" => get_env('SESSION_CACHE_PORT', 6379),
-        "auth" => get_env('SESSION_CACHE_AUTH', ''),
-        "persistent" => get_env('SESSION_CACHE_PERSISTENT', 1),
-        'prefix' => get_env('SESSION_CACHE_PREFIX', 'session_'),
+        "port" => \pms\get_env('SESSION_CACHE_PORT', 6379),
+        "auth" => \pms\get_env('SESSION_CACHE_AUTH', ''),
+        "persistent" => \pms\get_env('SESSION_CACHE_PERSISTENT', 1),
+        'prefix' => \pms\get_env('SESSION_CACHE_PREFIX', 'session_'),
         "index" => getenv('SESSION_CACHE_INDEX')
     ];
     if (empty($op['auth'])) {
@@ -160,14 +157,35 @@ $di->set(
 
 $di->set(
     "proxyCS", function () {
-    $client = new \pms\bear\ClientSync(get_env('PROXY_HOST'), get_env('PROXY_PROT'), 10);
+    $client = new \pms\bear\ClientSync(\pms\get_env('PROXY_HOST'), \pms\get_env('PROXY_PROT'), 10);
     return $client;
 
 });
 
-$di->setShared('logger', function () {
-    $logger = new \Phalcon\Logger\Adapter\File(RUNTIME_DIR . 'log/' . date('YmdHi') . '.log');
-    return $logger;
+
+
+$di->set('logger', function () {
+    $config = array(
+        'appenders' => array(
+            'default' => array(
+                'class' => 'LoggerAppenderPDO',
+                'params' => array(
+                    'dsn' => 'mysql:host=' . \pms\get_env('LOGPHP_PDO_HOST', \pms\get_env('MYSQL_HOST')) . ';dbname=' . \pms\get_env('LOGPHP_PDO_DBNAME', \pms\get_env('MYSQL_DBNAME')),
+                    'user' => \pms\get_env('LOGPHP_PDO_USER', \pms\get_env('MYSQL_USERNAME')),
+                    'password' => \pms\get_env('LOGPHP_PDO_PASSWORD', \pms\get_env('MYSQL_PASSWORD')),
+                    'table' => 'web_log',
+                    'insertSql' => "INSERT INTO __TABLE__ (timestamp, sname,logger,ipad, level, message, thread, file, line) VALUES (?,?, ?,?, ?, ?, ?, ?, ?)",
+                    'insertPattern' => '%date{Y-m-d H:i:s},%e{SERVICE_NAME},%logger,%e{SERVER_ADDR},%level,%message,%pid,%file,%line'
+                )
+            ),
+        ),
+        'rootLogger' => array(
+            'appenders' => array('default'),
+        ),
+    );
+    \Logger::configure($config);
+    return Logger::getLogger('default');
+
 });
 
 

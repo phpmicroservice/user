@@ -24,7 +24,7 @@ class RegsTx extends \pms\Task\TxTask implements TaskInterface
     protected function b_dependenc()
     {
         $data = $this->getData();
-        output($data, '272727');
+        \pms\output($data, '272727');
     }
 
     /**
@@ -54,7 +54,7 @@ class RegsTx extends \pms\Task\TxTask implements TaskInterface
         foreach ($txdata['server'] as $server) {
             $this->add_dependenc($server, 'regs', $txdata);
         }
-        output($data, '515151');
+        \pms\output($data, '515151');
         # 得到结果,开始追加全局事务
         if (!$this->dependency()) {
             return "追加事务失败!";

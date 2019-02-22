@@ -3,11 +3,9 @@
 namespace app\controller;
 
 use app\Controller;
-use app\logic\Info;
 use app\logic\Login;
 use app\logic\Password;
-use app\logic\Tel;
-use funch\Str;
+
 
 /**
  *
@@ -43,13 +41,14 @@ class Index extends Controller
     public function login()
     {
         $data = $this->getData();
+        $this->logger->info($data);
         $Login = new \app\logic\Login();
         $re = $Login->loginAction($data);
         if (is_int($re)) {
             $this->session->destroy();
             $this->session->set('user_id', $re);
         }
-        output($this->session->get('user_id'), 'user_id');
+        \pms\output($this->session->get('user_id'), 'user_id');
         return $this->send($re);
     }
 
@@ -111,7 +110,7 @@ class Index extends Controller
      */
     public function islogin()
     {
-        output($this->session->getId(), 'session');
+        \pms\output($this->session->getId(), 'session');
         $uid = $this->session->get('user_id');
         $this->connect->send_succee($uid);
 

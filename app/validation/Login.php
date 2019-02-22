@@ -21,18 +21,18 @@ class Login extends \pms\Validation
                 "message" => "username"
             ],
         ],
-        'captcha_value' => [
-            'required' => [
-                'cancelOnFail' => true,
-                "message" => "captcha_value"
-            ],
-        ],
-        'captcha_identifying' => [
-            'required' => [
-                'cancelOnFail' => true,
-                "message" => "captcha_identifying"
-            ],
-        ],
+//        'captcha_value' => [
+//            'required' => [
+//                'cancelOnFail' => true,
+//                "message" => "captcha_value"
+//            ],
+//        ],
+//        'captcha_identifying' => [
+//            'required' => [
+//                'cancelOnFail' => true,
+//                "message" => "captcha_identifying"
+//            ],
+//        ],
         'password' => [
             'required' => [
                 'cancelOnFail' => true,
@@ -78,18 +78,21 @@ class Login extends \pms\Validation
     
     public function beforeValidation1($data)
     {
-        # 验证码
-        $this->add_Validator('captcha_value',[
-            'name'=>ServerAction::class,
-            'server_action'=>'validation@/server/true_check',
-            'data'=>[
-                "sn"=>'user',
-                "operation"=>'login',
-                "value"=>$data['captcha_value'],
-                "identifying"=>$data['captcha_identifying']
-            ],
-            'message'=>'captcha'
-        ]);
+        if(0){
+            # 验证码
+            $this->add_Validator('captcha_value',[
+                'name'=>ServerAction::class,
+                'server_action'=>'validation@/server/true_check',
+                'data'=>[
+                    "sn"=>'user',
+                    "operation"=>'login',
+                    "value"=>$data['captcha_value'],
+                    "identifying"=>$data['captcha_identifying']
+                ],
+                'message'=>'captcha'
+            ]);
+        }
+
 
     }
 
