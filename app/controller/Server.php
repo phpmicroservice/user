@@ -22,7 +22,7 @@ class Server extends Controller
     {
         $user_id = $this->getData('user_id');
         $model = \app\model\user::findFirstById((int)$user_id);
-        $this->connect->send_succee($model instanceof \app\model\user);
+        $this->send_succee($model instanceof \app\model\user);
     }
 
     /**
@@ -33,7 +33,7 @@ class Server extends Controller
         $data = $this->getData();
         $ser = new \app\logic\Reg();
         $re = $ser->validation($data);
-        $this->connect->send_succee($re);
+        $this->send_succee($re);
     }
 
     /**

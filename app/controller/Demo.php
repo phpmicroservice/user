@@ -12,14 +12,14 @@ class Demo extends \pms\Controller
      */
     public function index($data)
     {
-        $this->connect->send_succee([
+        $this->send_succee([
             $data, "我是用户分组", APP_HOST_IP
         ]);
     }
 
     public function demo2($data)
     {
-        $this->connect->send_succee([
+        $this->send_succee([
             $data, "我是用户分组.demo2"
         ]);
     }

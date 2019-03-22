@@ -2,7 +2,6 @@
 
 namespace app;
 
-
 /**
  * 主控制器
  * Class Controller
@@ -14,9 +13,11 @@ namespace app;
  * @property \Logger $logger
  * @package app\controller
  */
-class Controller extends \pms\Controller
+class Controller extends \pms\Controller\Tcp
 {
+
     public $user_id;
+    private $passing = false;
 
     /**
      * 初始化
@@ -24,34 +25,80 @@ class Controller extends \pms\Controller
      */
     public function initialize()
     {
+        parent::initialize();
+        
+        $sid = $this->connect->getData('sid');
+        $this->session = new \pms\Session($sid);
         if (is_object($this->session)) {
             $this->user_id = $this->session->get('user_id');
         } else {
             $this->user_id = 0;
         }
+        $this->passing = $this->connect->getData('p');
     }
-
-
-
 
     /**
-     * 发送消息
-     * @param $re
+     * 发送一个请求
+     * @param $router
+     * @param $data
+     * @return bool
      */
-    public function send($re)
+    public function send_ask($server, $router, $data)
     {
-        if ($re instanceof \pms\Validation\Message\Group) {
-            # 错误消息
-            $d = $re->toArray();
-            $this->connect->send_error($d['message'], $d['data'], 424);
-        } else {
-            if(is_string($re)){
-                $this->connect->send_error($re, '失败');
-            }else{
-                $this->connect->send_succee($re, '成功');
-            }
-        }
+        return $this->send([
+                    's' => $server,
+                    'r' => $router,
+                    'd' => $data
+        ]);
     }
 
+    /**
+     * 发送一个成功
+     * @param $m 消息
+     * @param array $d 数据
+     * @param int $t 类型/控制器
+     */
+    public function send_succee($d = [], $m = '成功', $t = '')
+    {
+        $data = [
+            'm' => $m,
+            'd' => $d,
+            'e' => 0,
+            't' => empty($t) ? $this->connect->getRouterString() : $t
+        ];
+        return $this->send($data);
+    }
+
+    /**
+     * 发送一个错误的消息
+     * @param $m 错误消息
+     * @param array $d 错误数据
+     * @param int $e 错误代码
+     * @param int $t 类型,路由
+     */
+    public function send_error($m, $d = [], $e = 1, $t = '')
+    {
+        $data = [
+            'm' => $m,
+            'd' => $d,
+            'e' => $e,
+            't' => empty($t) ? $this->getRouter() : $t
+        ];
+        return $this->send($data);
+    }
+
+    /**
+     * 发送数据
+     * @param type $data
+     */
+    public function send($data)
+    {
+        if ($this->passing) {
+            $data['p'] = $this->passing;
+        }
+        $data['f'] = strtolower(SERVICE_NAME);
+        \pms\Output::output($data,'send');
+        $this->connect->send($data);
+    }
 
 }

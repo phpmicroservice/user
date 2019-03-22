@@ -14,14 +14,6 @@ use app\logic\Password;
  */
 class Index extends Controller
 {
-    public function getsid()
-    {
-        $this->connect->send_succee(md5(md5(time()) . mt_rand(1, 999999)));
-    }
-
-
-
-
 
     /**
      * 查找用户
@@ -49,7 +41,7 @@ class Index extends Controller
             $this->session->set('user_id', $re);
         }
         \pms\output($this->session->get('user_id'), 'user_id');
-        return $this->send($re);
+        return $this->send_succee($re);
     }
 
     /**
@@ -112,7 +104,7 @@ class Index extends Controller
     {
         \pms\output($this->session->getId(), 'session');
         $uid = $this->session->get('user_id');
-        $this->connect->send_succee($uid);
+        $this->send_succee($uid);
 
     }
 
@@ -166,7 +158,7 @@ class Index extends Controller
     {
         //$this->session->set('user_id', 0);
         $this->session->destroy();
-        $this->connect->send_succee([], "退出成功!");
+        $this->send_succee([], "退出成功!");
     }
 
 }

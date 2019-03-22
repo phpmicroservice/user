@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0366a371df13f3e394a3a342081fe94",
+    "content-hash": "e67d3ea13524cc127c10aa041a12bd60",
     "packages": [
         {
             "name": "apache/log4php",
@@ -171,12 +171,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmicroservice/pms.git",
-                "reference": "8a96725585908a21c8d6ac407d1a2258ca9890c6"
+                "reference": "a4c29ce99df96b789c14226c7db6ff07ccbdd910"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmicroservice/pms/zipball/8a96725585908a21c8d6ac407d1a2258ca9890c6",
-                "reference": "8a96725585908a21c8d6ac407d1a2258ca9890c6",
+                "url": "https://api.github.com/repos/phpmicroservice/pms/zipball/a4c29ce99df96b789c14226c7db6ff07ccbdd910",
+                "reference": "a4c29ce99df96b789c14226c7db6ff07ccbdd910",
                 "shasum": ""
             },
             "require": {
@@ -223,7 +223,41 @@
                 "source": "https://github.com/phpmicroservice/pms/tree/0.3",
                 "issues": "https://github.com/phpmicroservice/pms/issues"
             },
-            "time": "2019-02-17T10:16:48+00:00"
+            "time": "2019-03-20T12:11:44+00:00"
+        },
+        {
+            "name": "swoft/swoole-ide-helper",
+            "version": "v4.2.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swoft-cloud/swoole-ide-helper.git",
+                "reference": "912a2c5db04c859531d7e89a1a985bb63354fe8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swoft-cloud/swoole-ide-helper/zipball/912a2c5db04c859531d7e89a1a985bb63354fe8d",
+                "reference": "912a2c5db04c859531d7e89a1a985bb63354fe8d",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "ide helper for Swoft and Swoole",
+            "keywords": [
+                "ide-helper",
+                "php",
+                "swoft",
+                "swoole"
+            ],
+            "time": "2019-01-06T11:09:21+00:00"
         }
     ],
     "packages-dev": [
@@ -239,13 +273,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/phalcon/ide-stubs/zipball/65144f2b0fad32b182ccb062b1efc1b4edea5d44",
                 "reference": "65144f2b0fad32b182ccb062b1efc1b4edea5d44",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
@@ -285,8 +313,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "phpmicroservice/pms-frame": 20,
-        "eaglewu/swoole-ide-helper": 20
+        "phpmicroservice/pms-frame": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

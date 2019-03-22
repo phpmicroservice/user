@@ -13,6 +13,7 @@
     "apache/log4php": "~2.3.0"
   },
   "require-dev": {
-    "phalcon/ide-stubs": "3.4.*"
+    "phalcon/ide-stubs": "3.4.*",
+    "swoft/swoole-ide-helper": "^4.2"
   }
 }

@@ -12,12 +12,21 @@ $loader->registerNamespaces(
 $loader->register();
 
 
+
 /**
  * The FactoryDefault Dependency Injector automatically registers the right
  * services to provide a full stack framework.
  */
-$di = new Phalcon\DI\FactoryDefault();
+$di = new Phalcon\DI\FactoryDefault\Cli();
 
+$di->setShared('dispatcher', function () {
+    #
+    $dispatcher = new Phalcon\Cli\Dispatcher();
+    $dispatcher->setDefaultNamespace('app\controller');
+    $dispatcher->setActionSuffix('');
+    $dispatcher->setTaskSuffix('');
+    return $dispatcher;
+});
 $di->setShared('dConfig', function () {
     #Read configuration
     $config = new Phalcon\Config(require ROOT_DIR . '/config/config.php');
@@ -114,21 +123,7 @@ $di->setShared('sessionCache', function () use ($di) {
 });
 
 
-$di["router"] = function () {
-    $router = new \Phalcon\Mvc\Router();
-    $router->setDefaultNamespace('app\\controller');
-    $router->setDefaultController('index');
-    $router->setDefaultAction('index');
-    $router->add(
-        "/:controller/:action/:params", [
-            "controller" => 1,
-            "action" => 2,
-            'params' => 3
-        ]
-    );
 
-    return $router;
-};
 
 //注册过滤器,添加了几个自定义过滤方法
 $di->setShared('filter', function () {
@@ -212,5 +207,38 @@ $di["db"] = function () use ($di) {
 
 
 
+
+
+$di->setShared('router2', function () {
+    $router = new \Phalcon\Mvc\Router();
+    $router->setDefaultController('open');
+    $router->setDefaultAction('index');
+    $router->add(
+        "/:controller/:action/:params",
+        [
+            "controller" => 1,
+            "action" => 2
+        ]
+    );
+    $router->add(
+        "/open",
+        [
+            "controller" => 'open',
+            "action" => 'index'
+        ]
+    );
+
+
+    $router->add(
+        "/close",
+        [
+            "controller" => 'close',
+            "action" => 'index'
+        ]
+    );
+   
+    
+    return $router;
+});
 
 

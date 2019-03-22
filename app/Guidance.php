@@ -3,6 +3,7 @@
 namespace app;
 
 use Phalcon\Events\Event;
+use regreg\Register;
 
 /**
  * 引导类,初始化
@@ -31,9 +32,7 @@ class Guidance extends \Phalcon\Di\Injectable
     {
         \pms\output('beforeStart  beforeStart', 'beforeStart');
         # 写入依赖注入
-
-
-
+        $pms_server->app->onBind('init',$this);
     }
 
     public function onStart(Event $event, \pms\Server $pms_server, \Swoole\Server $server)
@@ -59,17 +58,17 @@ class Guidance extends \Phalcon\Di\Injectable
         $this->eventsManager->attach('dispatch:beforeNotFoundHandler', new NotFound());
         $this->eventsManager->attach('dispatch:beforeNotFoundAction', new NotFound());
         $this->eventsManager->attach('dispatch:beforeDispatch', new Alc(), 1);
-        $pms_server->app->onBind('init',function (Event $event,  $app, \Swoole\Server $server){
-            $rer =swoole_timer_tick(5000,function ()use ($server){
-                $task_data = [
-                    'name' => 'Inituser',
-                    'data' => [
-                    ]
-                ];
-                $server->task($task_data, -1);
-            });
-            var_dump(['73',$rer]);
-        });
+//        $pms_server->app->onBind('init',function (Event $event,  $app, \Swoole\Server $server){
+//            $rer =swoole_timer_tick(5000,function ()use ($server){
+//                $task_data = [
+//                    'name' => 'Inituser',
+//                    'data' => [
+//                    ]
+//                ];
+//                $server->task($task_data, -1);
+//            });
+//            var_dump(['73',$rer]);
+//        });
     }
 
     /**
@@ -78,7 +77,7 @@ class Guidance extends \Phalcon\Di\Injectable
     public function readyJudge(Event $event, \pms\Server $pms_server, $timeid)
     {
         $this->dConfig->ready = true;
-        \pms\output('初始化完成', 'init');
+
     }
 
     /**
@@ -87,9 +86,18 @@ class Guidance extends \Phalcon\Di\Injectable
     public function readySucceed(Event $event, \pms\Server $pms_server, \Swoole\Server $swoole_server)
     {
 
+        \pms\output('初始化完成!'.$swoole_server->worker_id, 'readySucceed');
 
 
+    }
 
+    /**
+     * APP初始化!,只被调用一次
+     */
+    public function init(Event $event, \pms\App $app, \Swoole\Server $swoole_server)
+    {
+        \pms\output('APP初始化!', 'init101');
+        $reg =new Register($swoole_server);
     }
 
     /**

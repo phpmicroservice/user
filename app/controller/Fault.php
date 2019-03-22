@@ -22,7 +22,7 @@ class Fault extends \pms\Controller
      */
     public function controller()
     {
-        $this->connect->send_error('不存在的内容!', [], 404);
+        $this->send_error('不存在的内容!', [], 404);
     }
 
 
