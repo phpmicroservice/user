@@ -24,6 +24,7 @@ class Index extends Controller
         $username = $this->getData('username');
         $service = new \app\logic\User();
         $re = $service->find_user($username);
+        
         return $this->send($re);
     }
 

@@ -94,9 +94,19 @@ class Controller extends \pms\Controller\Tcp
     public function send($data)
     {
         if ($this->passing) {
-            $data['p'] = $this->passing;
+            if(is_object($data)){
+                $data->p = $this->passing;
+            }else{
+                $data['p'] = $this->passing;
+            }
         }
-        $data['f'] = strtolower(SERVICE_NAME);
+        
+        if(is_object($data)){
+            $data->f = strtolower(SERVICE_NAME);
+        }else{
+            $data['f'] = strtolower(SERVICE_NAME);
+        }
+        
         \pms\Output::output($data,'send');
         $this->connect->send($data);
     }
